@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">AutoKey</title>
+  <desc id="desc">A graphite keycap with a mint Shift arrow and a returning arrow for keyboard automation.</desc>
+  <defs>
+    <linearGradient id="keycap" x1="0" y1="16" x2="0" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#303B46"/>
+      <stop offset="1" stop-color="#151B22"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="55" x2="0" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A1F4D4"/>
+      <stop offset="1" stop-color="#70E1BD"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="28" width="224" height="214" rx="50" fill="#0C1015"/>
+  <rect x="16" y="16" width="224" height="214" rx="50" fill="url(#keycap)" stroke="#42515E" stroke-width="2"/>
+  <path d="M 108 57 C 110 55 114 55 116 57 L 162 102 C 165 105 163 110 159 110 L 134 110 L 134 149 C 134 152 131 154 128 154 L 96 154 C 93 154 90 152 90 149 L 90 110 L 65 110 C 61 110 59 105 62 102 Z" fill="url(#mint)"/>
+  <path d="M 79 173 C 95 190 126 195 151 184 C 177 172 188 151 183 126" fill="none" stroke="url(#mint)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 171 130 L 181 110 C 182 108 184 108 186 110 L 201 124 C 203 126 202 129 199 129 L 174 133 C 171 134 170 132 171 130 Z" fill="url(#mint)"/>
+</svg>

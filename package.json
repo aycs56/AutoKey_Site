@@ -1,0 +1,15 @@
+{
+  "name": "autokey-official-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AutoKey official introduction website, maintained separately from the Windows application.",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "build": "node tools/build.mjs",
+    "preview": "node tools/serve.mjs --dist",
+    "check": "node --check public/app.js && node --check tools/build.mjs && node --check tools/serve.mjs && node --check tools/content-root.mjs",
+    "test:boundaries": "node tests/build-boundaries.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
