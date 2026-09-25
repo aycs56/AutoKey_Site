@@ -1,6 +1,7 @@
 'use strict';
 
 (() => {
+  const t = (source, values) => window.AutoKeyI18n.t(source, values);
   const tabs = [...document.querySelectorAll('[data-tab]')];
   const panels = [...document.querySelectorAll('[data-panel]')];
   const tablist = document.querySelector('.scenario-tabs');
@@ -32,12 +33,12 @@
     const target = simulator();
     if (!target) return;
     const status = target.querySelector('.demo-status');
-    status.textContent = message;
+    status.textContent = t(message);
     status.classList.toggle('is-running', running);
     target.querySelector('.once-button').disabled = running;
     const loopButton = target.querySelector('.loop-button');
-    loopButton.textContent = running ? '停止示範 ■' : '開始循環 ↻';
-    loopButton.setAttribute('aria-label', running ? '停止示範' : '開始循環');
+    loopButton.textContent = t(running ? '停止示範' : '開始循環') + (running ? ' ■' : ' ↻');
+    loopButton.setAttribute('aria-label', t(running ? '停止示範' : '開始循環'));
   }
 
   function releaseKeys() {
@@ -54,21 +55,21 @@
     looping = false;
     releaseKeys();
     const target = simulator();
-    if (target && active === 'game') target.querySelector('.hold-label').textContent = '已釋放';
+    if (target && active === 'game') target.querySelector('.hold-label').textContent = t('已釋放');
     updateControls(message);
   }
 
   function resetView() {
     count = 0;
     simulators.forEach(target => {
-      target.querySelector('.demo-count').textContent = '0 次';
+      target.querySelector('.demo-count').textContent = t('{count} 次', { count: 0 });
       target.querySelectorAll('.rhythm-track span').forEach(dot => dot.classList.remove('is-lit'));
       target.querySelector('.once-button').disabled = false;
       const button = target.querySelector('.loop-button');
-      button.textContent = '開始循環 ↻';
-      button.setAttribute('aria-label', '開始循環');
+      button.textContent = t('開始循環') + ' ↻';
+      button.setAttribute('aria-label', t('開始循環'));
       const status = target.querySelector('.demo-status');
-      status.textContent = '尚未開始 · 網頁示意';
+      status.textContent = t('尚未開始 · 網頁示意');
       status.classList.remove('is-running');
     });
     const work = document.querySelector('[data-simulator="work"]');
@@ -76,12 +77,12 @@
     work.querySelector('.reading-page').textContent = '01 / 04';
     const game = document.querySelector('[data-simulator="game"]');
     game.querySelector('.hold-meter').classList.remove('is-holding', 'is-complete');
-    game.querySelector('.hold-label').textContent = '等待開始';
+    game.querySelector('.hold-label').textContent = t('等待開始');
   }
 
   function registerPress(target) {
     count += 1;
-    target.querySelector('.demo-count').textContent = `${count} 次`;
+    target.querySelector('.demo-count').textContent = t('{count} 次', { count });
     target.querySelectorAll('.rhythm-track span').forEach((dot, index) => dot.classList.toggle('is-lit', index < Math.min(count, 4)));
   }
 
@@ -105,14 +106,14 @@
     target.querySelector('.demo-key').classList.add('is-pressed');
     meter.classList.remove('is-complete');
     meter.classList.add('is-holding');
-    target.querySelector('.hold-label').textContent = '長壓中';
+    target.querySelector('.hold-label').textContent = t('長壓中');
     schedule(() => {
       target.querySelector('.demo-key').classList.remove('is-pressed');
       meter.classList.remove('is-holding');
       meter.classList.add('is-complete');
       registerPress(target);
       if (looping) {
-        target.querySelector('.hold-label').textContent = '休息 1 秒';
+        target.querySelector('.hold-label').textContent = t('休息 1 秒');
         schedule(pressGame, 1000);
       } else stop('已完成一次示範');
     }, 1000);
@@ -171,6 +172,12 @@
     if (document.hidden && running) stop('分頁離開時已停止，按開始重新示範');
   });
   window.addEventListener('pagehide', () => stop('示範已停止'));
+  window.addEventListener('autokey:language-change', () => {
+    const wasRunning = running;
+    stop();
+    resetView();
+    if (wasRunning) updateControls('語言已切換，示範已停止');
+  });
   selectTab('work');
   document.documentElement.classList.add('js');
 })();

@@ -2,6 +2,7 @@ import { cp, lstat, mkdir, readdir, realpath, rm, stat } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { contentRoot, validateSourceTree } from './content-root.mjs';
+import { writeLocaleBundle } from './build-locales.mjs';
 
 const projectRoot = await realpath(fileURLToPath(new URL('../', import.meta.url)));
 const source = await contentRoot(projectRoot, 'public');
@@ -13,10 +14,11 @@ try {
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;
 }
-for (const file of ['index.html', 'styles.css', 'app.js', 'assets/autokey.svg']) {
+for (const file of ['index.html', 'styles.css', 'app.js', 'i18n-core.js', 'i18n.js', 'assets/autokey.svg']) {
   if (!(await stat(path.join(source, file))).isFile()) throw new Error(`Required file missing: ${file}`);
 }
 await validateSourceTree(source);
+await writeLocaleBundle();
 await mkdir(destination, { recursive: true });
 if (await realpath(destination) !== destination) throw new Error('Build output resolved outside the intended directory');
 for (const item of await readdir(destination, { withFileTypes: true })) {

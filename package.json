@@ -5,11 +5,14 @@
   "type": "module",
   "description": "AutoKey official introduction website, maintained separately from the Windows application.",
   "scripts": {
+    "locales": "node tools/build-locales.mjs",
+    "predev": "node tools/build-locales.mjs",
     "dev": "node tools/serve.mjs",
     "build": "node tools/build.mjs",
     "preview": "node tools/serve.mjs --dist",
-    "check": "node --check public/app.js && node --check tools/build.mjs && node --check tools/serve.mjs && node --check tools/content-root.mjs",
-    "test:boundaries": "node tests/build-boundaries.mjs"
+    "check": "node --check public/app.js && node --check public/i18n-core.js && node --check public/i18n.js && node --check tools/build-locales.mjs && node --check tools/build.mjs && node --check tools/serve.mjs && node --check tools/content-root.mjs",
+    "test:boundaries": "node tests/build-boundaries.mjs",
+    "test:localization": "node tests/localization.mjs"
   },
   "engines": { "node": ">=22" }
 }

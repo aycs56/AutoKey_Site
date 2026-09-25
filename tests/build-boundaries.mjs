@@ -13,7 +13,8 @@ const rejects = (file, pattern) => assert.throws(() => run(file), error => patte
 await mkdir(path.join(source, 'assets'), { recursive: true });
 await mkdir(outside, { recursive: true });
 await cp(path.join(projectRoot, 'tools'), path.join(fixture, 'tools'), { recursive: true });
-for (const name of ['index.html', 'app.js', 'styles.css', 'assets/autokey.svg']) await writeFile(path.join(source, name), 'fixture');
+await cp(path.join(projectRoot, 'locales'), path.join(fixture, 'locales'), { recursive: true });
+for (const name of ['index.html', 'app.js', 'i18n-core.js', 'i18n.js', 'styles.css', 'assets/autokey.svg']) await writeFile(path.join(source, name), 'fixture');
 await writeFile(path.join(outside, 'settings.json'), 'private-fixture');
 run('build.mjs');
 assert.equal(await readFile(path.join(fixture, 'dist', 'index.html'), 'utf8'), 'fixture');

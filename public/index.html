@@ -8,14 +8,19 @@
   <title>AutoKey — 把重複按鍵，交給 AutoKey。</title>
   <link rel="icon" href="./assets/autokey.ico">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./locales.js" defer></script>
+  <script src="./i18n-core.js" defer></script>
+  <script src="./i18n.js" defer></script>
   <script src="./app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
   <header class="site-header wrap">
     <a class="brand" href="#" aria-label="AutoKey 首頁"><img src="./assets/autokey.svg" width="40" height="40" alt=""><span>AutoKey<span class="brand-dot">.</span></span></a>
+    <label class="language-control" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span class="sr-only">語言</span><select id="site-language" aria-label="網站語言"><option value="en" lang="en" data-no-translate>English</option><option value="zh-Hant" lang="zh-Hant" data-no-translate>繁體中文</option><option value="zh-Hans" lang="zh-Hans" data-no-translate>简体中文</option></select></label>
     <nav aria-label="主要導覽"><a href="#features">功能</a><a href="#scenarios">應用情境</a><a href="#compatibility">相容性</a><a href="#faq">常見問題</a></nav>
     <a class="header-action" href="#scenarios">體驗示範 <span aria-hidden="true">↗</span></a>
+    <p id="language-notice" class="language-notice" role="status" hidden></p>
   </header>
 
   <main id="main">
@@ -98,7 +103,7 @@
       <details><summary>切換到其他視窗，還能繼續嗎？</summary><p>可以，前提是目標程式接受背景按鍵訊息。AutoKey 不會切換你的操作焦點；切回目標視窗也不需要反覆按快捷鍵重新啟動。鎖定、休眠或目標關閉時的停止規則，請依桌面程式說明操作。</p></details>
       <details><summary>為什麼顯示執行中，目標卻沒有反應？</summary><p>傳送訊息不代表目標已採納。程式的輸入方式、背景接收設計或權限都可能影響結果。請先用簡單按鍵實際測試；保持前景或提高權限，也無法保證所有程式都相容。</p></details>
       <details><summary>可以設定一組複雜連招嗎？</summary><p>目前支援把連點與長壓按鍵整理成群組，群組內按鍵同時起算。尚未支援依序輸出的指令序列與精確連招，也不保證多鍵組合效果。格鬥情境是靜態拆解示意，並非現有連招功能。</p></details>
-      <details><summary>桌面程式支援哪些介面語言？</summary><p>桌面程式支援 Steam 平台清單的 31 種語系。語言選項設為「預設」時，依 Windows 顯示語言開啟，找不到相符語系則使用英文；也能自行切換。官方網站目前提供繁體中文。</p></details>
+      <details><summary>桌面程式支援哪些介面語言？</summary><p>桌面程式支援 Steam 平台清單的 31 種語系。語言選項設為「預設」時，依 Windows 顯示語言開啟，找不到相符語系則使用英文；也能自行切換。官網提供英文、繁體中文與簡體中文。</p></details>
       <details><summary>如何取得程式與 Steam 版本？</summary><p>Steam 版本準備中，尚未正式上架。商店頁面與正式下載資訊將另行公告；目前可以先在這個頁面體驗操作示意，了解工具的能力與使用限制。</p></details>
       <details><summary>設定會自動保存、跨電腦同步嗎？</summary><p>桌面程式會在本機保存按鍵群組與語言偏好。Steam Cloud 同步流程正在準備，尚待 Steam 後台啟用與雙機驗收；目前不宣稱已提供跨電腦雲端同步。</p></details>
     </div></section>
