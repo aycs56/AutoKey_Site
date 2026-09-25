@@ -45,9 +45,9 @@ npm.cmd run preview
 
 網站不含追蹤、cookies、資料提交表單、帳戶或外部字型；localStorage 只保存語言偏好。桌面 31 語系與網站 3 語系分開維護。發布文案前需同步核對桌面 README，尤其前景／背景相容性、Steam Cloud 與連招序列的實際狀態。
 
-## 未來 GitHub 與網站部署
+## GitHub 與網站部署
 
-本輪只建立本機 Git、設定 origin 與提交，未推送網站或發布公開網址。未來先確認遠端為 `https://github.com/aycs56/AutoKey_Site.git`，核對儲存庫權限與內容，再執行：
+官網的獨立來源儲存庫為 [aycs56/AutoKey_Site](https://github.com/aycs56/AutoKey_Site)。2026-09-26 使用者已授權首次推送官網；後續同步依 [工作規範](工作規範.md) 的已確認流程與當次授權執行，先核對遠端、待送內容與建置結果：
 
 ```powershell
 git remote -v
