@@ -171,6 +171,8 @@ flowchart TD
 
 ## QA 驗收清單
 
+落地精修：必要標籤跨尺寸至少 14px；導覽可點寬度至少 44px。手機保留功能／相容性標題的語意換行，標題使用 balanced wrapping，避免末行只剩一個字。沿用本規格的一套 tokens 與資產。
+
 1. 1440×1000、1280×800、768×1024、390×844、320×740 五尺寸驗證無水平溢出、標題完整、hero 不裁重要資訊；留下桌面與手機 screenshot。
 2. Tab 鍵遍历 skip link、導覽、CTA、情境、示範控制與 FAQ；focus 2px mint ring＋3px offset 清楚。全部可觸區至少 44×44px，對比正文至少 4.5:1、控制必要邊界至少 3:1。
 3. 情境 tabs Arrow/Home/End 正確、只有 active panel 可聚焦；切換立即停止，返回原情境不自行跑。FAQ 原生鍵盤與觸控可展開，內容不截斷。

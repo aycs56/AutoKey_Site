@@ -21,11 +21,14 @@ npm.cmd run dev
 
 ```powershell
 npm.cmd run check
+npm.cmd run test:boundaries
 npm.cmd run build
 npm.cmd run preview
 ```
 
 `build` 只將本站 `public/` 複製至固定 `dist/`，不讀桌面程式目錄。`preview` 以相同位址提供建置成果。可用環境變數 `PORT` 改連接埠。所有資產本機自足，可直接開 `public/index.html` 檢視基本內容與互動；正式部署請用靜態 HTTP 主機。
+
+已驗證 36 項瀏覽器互動、5 種螢幕尺寸 × 3 情境，以及建置目錄隔離；結果與限制見 [驗收紀錄](docs/ai-team/validation.md)。
 
 ## 結構與維護
 
