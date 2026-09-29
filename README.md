@@ -54,6 +54,10 @@ git remote -v
 git push -u origin main
 ```
 
-網站發布可將 `dist/` 交給任意靜態主機；若選 GitHub Pages，需另設定 Pages 部署來源與可見性。所有資源採相對 URL，可放子目錄。GitHub repository 上傳與公開網站是兩個步驟，尚未建立自動公開部署。
+正式網站自 2026-09-30 在這台 Windows 電腦運行：[autokey.desktoppetstudio.com](https://autokey.desktoppetstudio.com/)。Caddy 處理 HTTPS，AutoKey origin 綁定 `127.0.0.1:18181`；正式快照與 Node 安裝在 `C:\ProgramData\AutoKeySite`，不依賴使用者登入或開著終端機。
+
+`AutoKey Site Monitor` 排程在開機後延遲 30 秒啟動，並每小時檢查網站。本站連續三次檢查失敗時，最多嘗試啟動三次；正常時保留原程序。共享 Caddy 保留既有每 5 分鐘復原排程。DNS／網際網路斷線會記錄錯誤並於下次檢查再試，不會無限重啟健康的網站。
+
+更新正式網站先執行 `npm.cmd run build:hosting`，再以管理員執行安裝腳本。完整指令、停止與復原方式見 [本機託管維運](docs/local-hosting.md)。Git 提交、GitHub 推送與本機正式快照部署分開處理；修改原始檔不會直接改動正在運行的正式網站。
 
 Steam 尚未公開商店 URL／下載管道，網站因此不放假商店或下載連結。確定上架後再於取得區塊加入已驗證的商店連結及對應文案。
