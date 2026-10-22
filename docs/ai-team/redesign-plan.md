@@ -46,7 +46,7 @@
 
 - 設計版本 D1：`docs/ai-team/design/redesign-v1/index.html`、`styles.css`、`app.js`、`locales/*.json`、`locales.js`。使用既有 `public/i18n-core.js`、`public/i18n.js` 的相同行為；預覽對應原檔，不改正式網站。
 - 完整審閱入口與流程圖：`docs/ai-team/design/redesign-v1/review.html`。設計／尺寸／行為交接在同目錄 `design-handoff.md`；未確認前狀態為 draft。
-- 原創幾何採集場景為 HTML 中共用 SVG symbol；輸出範圍不含商用遊戲素材、音效或宣稱實機的畫面。既有 `public/assets/autokey.svg` 為唯一品牌來源。
+- 原創幾何採集場景為共用 `assets/mining-scene.svg`，HTML 疊上對齊 viewBox 的互動光束；正式目標 `public/assets/mining-scene.svg`。輸出範圍不含商用遊戲素材、音效或宣稱實機的畫面。既有 `public/assets/autokey.svg` 為唯一品牌來源。
 - 預覽工具 `tools/design-preview.mjs` 僅暴露設計目錄、指定品牌素材及兩個既有語系 runtime，127.0.0.1:4187。不得提供 `.git`、桌面設定或其他專案。
 - 正式落地目標仍為 `public/index.html/styles.css/app.js` 及根 `locales/*.json`。D1 確認後才更新，設計資產及其規則直接沿用，不另起視覺。
 

@@ -1,6 +1,6 @@
 # D1 設計與交接規格
 
-日期 2026-10-22｜需求 R1／規劃 P1｜狀態 draft，awaiting-user-confirmation（完成渲染後呈現）｜Framework HTML/CSS/JavaScript。
+日期 2026-10-22｜需求 R1／規劃 P1｜狀態 rendered，PM-coverage-pass，awaiting-user-confirmation｜Framework HTML/CSS/JavaScript。
 
 ## 構圖與素材
 
@@ -19,15 +19,15 @@
 | Asset ID | 來源／canonical | 使用／規則／正式目的地 |
 | --- | --- | --- |
 | brand-mark | public/assets/autokey.svg | header/footer 不變形、不改色；現有品牌來源 |
-| mining-scene | index.html 的 #mining-world SVG symbol | hero 與長壓情境共用；1600/1000 類比例自適應，文字置於 HTML，正式同一 symbol |
+| mining-scene | assets/mining-scene.svg，原創 SVG | hero 與長壓情境共用；viewBox 800×520，透明、不裁切，文字置於 HTML；光束 (334,275)→(510,242) 由等比例 overlay 呈現；正式目標 public/assets/mining-scene.svg |
 | mouse-target | index.html 的滑鼠場景原創幾何 | 左鍵重複點按、固定游標、無移動路徑；正式情境 |
 | reading-sheet | index.html 的文件場景 HTML | 真實標題「專案摘要／操作步驟／檢查項目／參考資料」，不是行銷口號 |
 | tokens／motion | styles.css／app.js | 設計後沿用到 public，無新增框架／服務；未實作正式產品 |
 
 ## 尺寸、色彩與響應
 
-- 參考 viewport 1440×1000，DPR1，CSS px；最大內容 1280px、左右桌面 48px／手機 20px（320px 時16px）。寬版 hero 約 45:55；≤960px 垂直堆疊。
-- Header 約 80px；標題桌面 clamp 52–80px／手機 40–52px，line-height 1.14；H2 38–52px／手機30–36px；正文16–18px/1.8，次要正文至少14px。
+- 參考 viewport 1440×1000，DPR1，CSS px；最大內容1280px（1440px時左右80px）、一般桌面最小左右48px／平板32px／手機20px（320px時16px）。寬版 hero 欄比1:1.13；≤960px縮小欄距與標題，≤700px垂直堆疊。PM依768px渲染確認維持雙欄，不另加平板版構圖。
+- Header 桌面約83px；主標題桌面 clamp 48–70px、1440px時69.12px／手機38–54px，line-height 1.2或1.22；H2桌面34–50px／手機30–34px；正文14–17px/1.8–1.95，必要說明及限制至少14px。刻度、分類、圖內示意標籤9–13px，相關操作與限制在圖外正文完整說明；不靠圖內小字取得必要資訊。
 - 背景 #0b1012，表面 #131c20／#1b292e；文字 #f1f5f2、次要 #a9b9bd；薄荷 #9aefcc、薄荷上深字 #11261e；功能必要邊界 #6c858b；提示暖色 #efc38b。裝飾線可較淡，不作控制唯一邊界。
 - 操作目標至少44×44px，主要按鈕52px；內容可換行不截斷。頁籤在窄版三欄等寬、必要時兩行，頁面無橫向滾動。
 - 三語版保留同一結構，較長英文允許增加區塊高度。縮放不以 transform 縮小文字。
@@ -62,4 +62,16 @@
 
 ## PM 與工程交接
 
-渲染後新增實際 HTML hash、屏幕證據、需求覆蓋與測量。PM 檢查通過後才交使用者確認。確認前工程狀態 blocked-by-design-approval；不是產品故障。使用者批准該版本後，記錄訊息／日期／hash／資產版本，正式產品以相同viewport、locale、狀態比較；主要布局與控制尺寸容許±2 CSS px，字體抗鋸齒差異可接受，不可用模糊相似度掩蓋裁切或內容差異。
+已完成渲染及PM功能覆蓋，見 `pm-design-review.md`；獨立檢查與環境限制見 `qa-review.md`。兩個操作目標缺陷已修正並重測；三語×五寬度×三情境共45格無水平溢出且目標≥44px。真實hidden分頁及原生200%縮放未在無頭環境執行，已以邊界注入取消與640px等效viewport作支持，不能視為該兩項完整端到端證據。
+
+| D1 canonical file | SHA256 |
+| --- | --- |
+| index.html | `918256594f5f1d6d07d7a0cbbc403c0c11df9049ccd884c9875f7715d77b6fe8` |
+| styles.css | `d0e4fe59aa26a05725b04ea82556fca78aefff44d659df81bc6a5fa361b14f69` |
+| app.js | `f7bbf9b8636f0de24eaff7c09e1dacee442d4ca19918b717ae2f1acf03a832a8` |
+| locales.js | `c1929171ad9139be569d697f07b2279d1134347c712bfaf8cf42ba7d20e0a5b0` |
+| assets/mining-scene.svg | `81e02032d2b44ed476fb62754c3786f0e36ec0dcd61b9fadd1a2c42c5977b792` |
+
+本機審閱 `http://127.0.0.1:4187/`，完整網站設計 `/index.html`。重啟 `node tools/design-preview.mjs`；僅loopback，正式網站未替換。
+
+確認前工程狀態 blocked-by-design-approval；不是產品故障。使用者批准該版本後，記錄訊息／日期／hash／資產版本，正式產品以相同viewport、locale、狀態比較；主要布局與控制尺寸容許±2 CSS px，字體抗鋸齒差異可接受，不可用模糊相似度掩蓋裁切或內容差異。
