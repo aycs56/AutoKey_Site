@@ -1,6 +1,8 @@
 # D1 設計與交接規格
 
-日期 2026-10-22｜需求 R1／規劃 P1｜狀態 rendered，PM-coverage-pass，awaiting-user-confirmation｜Framework HTML/CSS/JavaScript。
+日期 2026-10-22｜需求 R1／規劃 P1｜狀態 rendered，PM-coverage-pass，user-confirmed｜Framework HTML/CSS/JavaScript。
+
+使用者於2026-10-22針對D1預覽問題回覆「確認 D1，依此落地」。批准基準為本機commit `bd7fa98`，涵蓋S1–S6全站／手機、三種情境、三語文案與本表檔案hash。工程DoR已具備；依這份畫面直接整合正式來源，不重新要求相同設計確認。
 
 ## 構圖與素材
 
@@ -22,7 +24,7 @@
 | mining-scene | assets/mining-scene.svg，原創 SVG | hero 與長壓情境共用；viewBox 800×520，透明、不裁切，文字置於 HTML；光束 (334,275)→(510,242) 由等比例 overlay 呈現；正式目標 public/assets/mining-scene.svg |
 | mouse-target | index.html 的滑鼠場景原創幾何 | 左鍵重複點按、固定游標、無移動路徑；正式情境 |
 | reading-sheet | index.html 的文件場景 HTML | 真實標題「專案摘要／操作步驟／檢查項目／參考資料」，不是行銷口號 |
-| tokens／motion | styles.css／app.js | 設計後沿用到 public，無新增框架／服務；未實作正式產品 |
+| tokens／motion | styles.css／app.js | 已原樣沿用到 public，無新增框架／服務；正式來源與設計hash一致 |
 
 ## 尺寸、色彩與響應
 
@@ -60,6 +62,8 @@
 
 都是短靜態內容，無 operational list、搜尋、多選或多欄設定需求；不加無意義搜尋／modal。語言保留既有 resolver 與 i18n runtime，設計翻譯包獨立，不覆蓋正式版本。
 
+正式整合時將D1三語JSON同步至根`locales/`，以既有工具產生`public/locales.js`；resolver/runtime未變。設計目錄保留批准基準，後續文案異動需同步其適用性。
+
 ## PM 與工程交接
 
 已完成渲染及PM功能覆蓋，見 `pm-design-review.md`；獨立檢查與環境限制見 `qa-review.md`。兩個操作目標缺陷已修正並重測；三語×五寬度×三情境共45格無水平溢出且目標≥44px。真實hidden分頁及原生200%縮放未在無頭環境執行，已以邊界注入取消與640px等效viewport作支持，不能視為該兩項完整端到端證據。
@@ -72,6 +76,6 @@
 | locales.js | `c1929171ad9139be569d697f07b2279d1134347c712bfaf8cf42ba7d20e0a5b0` |
 | assets/mining-scene.svg | `81e02032d2b44ed476fb62754c3786f0e36ec0dcd61b9fadd1a2c42c5977b792` |
 
-本機審閱 `http://127.0.0.1:4187/`，完整網站設計 `/index.html`。重啟 `node tools/design-preview.mjs`；僅loopback，正式網站未替換。
+本機審閱 `http://127.0.0.1:4187/`，完整網站設計 `/index.html`。重啟 `node tools/design-preview.mjs`；僅loopback，公開託管站台尚未替換；正式來源預覽在http://127.0.0.1:4188/。
 
-確認前工程狀態 blocked-by-design-approval；不是產品故障。使用者批准該版本後，記錄訊息／日期／hash／資產版本，正式產品以相同viewport、locale、狀態比較；主要布局與控制尺寸容許±2 CSS px，字體抗鋸齒差異可接受，不可用模糊相似度掩蓋裁切或內容差異。
+工程狀態 ready，正式產品以相同viewport、locale、狀態比較；主要布局與控制尺寸容許±2 CSS px，字體抗鋸齒差異可接受，不可用模糊相似度掩蓋裁切或內容差異。任何新增可見設計仍須維持正式來源與設計同步；本輪只原樣整合已確認D1。

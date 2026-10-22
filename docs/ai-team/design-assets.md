@@ -1,15 +1,15 @@
 # AutoKey 官網設計資產對照
 
-2026-10-22 更新。現行正式網站仍為 `ui-ux-spec.md`「按鍵節奏台」；整站改版設計為 `design/redesign-v1/` D1，待使用者視覺確認後才替換正式來源。品牌延續桌面版本，不另創 logo。
+2026-10-22 更新。正式原始碼已依使用者確認的 `design/redesign-v1/` D1整合；公開託管快照尚未替換。`ui-ux-spec.md`「按鍵節奏台」保留作舊版溯源。品牌延續桌面版本，不另創logo。
 
 ## D1 改版資產交接
 
 | 資產／canonical source | 正式目標 | 用途與目前狀態 |
 | --- | --- | --- |
 | `public/assets/autokey.svg/.ico` | 原路徑 | D1 預覽直接沿用已核對品牌與 favicon；不改色、不變形 |
-| `design/redesign-v1/assets/mining-scene.svg` | `public/assets/mining-scene.svg` | 原創探勘浮島，首屏及長壓案例共用；800×520、透明、不裁切，光束起訖334,275→510,242；SHA256 `81e02032d2b44ed476fb62754c3786f0e36ec0dcd61b9fadd1a2c42c5977b792`。沒有商用遊戲素材或外部資源。已整合D1，正式待確認 |
-| `design/redesign-v1/index.html/styles.css/app.js` | `public/index.html/styles.css/app.js` | 同一套版面、滑鼠／閱讀場景及動態契約；正式落地須直接沿用D1，不另起視覺 |
-| `design/redesign-v1/locales/*.json` | 根 `locales/*.json` | 每語159則，繁中、英文、簡中；正式bundle以既有工具產生 |
+| `design/redesign-v1/assets/mining-scene.svg` | `public/assets/mining-scene.svg` | 原創探勘浮島，首屏及長壓案例共用；800×520、透明、不裁切，光束起訖334,275→510,242；SHA256 `81e02032d2b44ed476fb62754c3786f0e36ec0dcd61b9fadd1a2c42c5977b792`。沒有商用遊戲素材或外部資源。已整合正式來源，hash一致 |
+| `design/redesign-v1/index.html/styles.css/app.js` | `public/index.html/styles.css/app.js` | 同一套版面、滑鼠／閱讀場景及動態契約；已原樣整合，三檔逐位元一致 |
+| `design/redesign-v1/locales/*.json` | 根 `locales/*.json` | 每語159則，繁中、英文、簡中；內容一致，正式bundle以既有工具產生 |
 | `public/i18n-core.js/i18n.js` | 原路徑 | 預覽直接使用現行語言判斷、翻譯及儲存；不複製改寫 |
 | `design/redesign-v1/review.html/review.css` | 不進正式產品 | 完整設計審閱入口、畫面與操作流程圖 |
 

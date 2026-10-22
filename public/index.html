@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0c1015">
-  <meta name="description" content="AutoKey 是 Windows 按鍵自動化工具。將連點、長壓與自訂快捷鍵整理成群組，依你的節奏執行。透過互動示意了解日常工作與遊戲情境，以及前景、背景接收的相容性。">
-  <title>AutoKey — 把重複按鍵，交給 AutoKey。</title>
+  <meta name="theme-color" content="#0b1012">
+  <meta name="description" content="AutoKey 是 Windows 鍵盤與滑鼠自動化工具。設定連點、長壓與群組快捷鍵，選擇執行一次或循環。試跑網頁示範，看看適合你的操作方式。">
+  <title>AutoKey｜連點、長壓，按你的設定來。</title>
   <link rel="icon" href="./assets/autokey.ico">
   <link rel="stylesheet" href="./styles.css">
   <script src="./locales.js" defer></script>
@@ -15,101 +15,109 @@
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
-  <header class="site-header wrap">
-    <a class="brand" href="#" aria-label="AutoKey 首頁"><img src="./assets/autokey.svg" width="40" height="40" alt=""><span>AutoKey<span class="brand-dot">.</span></span></a>
-    <label class="language-control" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span class="sr-only">語言</span><select id="site-language" aria-label="網站語言"><option value="en" lang="en" data-no-translate>English</option><option value="zh-Hant" lang="zh-Hant" data-no-translate>繁體中文</option><option value="zh-Hans" lang="zh-Hans" data-no-translate>简体中文</option></select></label>
-    <nav aria-label="主要導覽"><a href="#features">功能</a><a href="#scenarios">應用情境</a><a href="#compatibility">相容性</a><a href="#faq">常見問題</a></nav>
-    <a class="header-action" href="#scenarios">體驗示範 <span aria-hidden="true">↗</span></a>
-    <p id="language-notice" class="language-notice" role="status" hidden></p>
+  <header class="site-header" data-screen="S1" data-component="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="AutoKey 首頁"><img src="./assets/autokey.svg" width="36" height="36" alt="" data-asset="brand-mark"><span>AutoKey<span class="brand-dot">.</span></span></a>
+      <nav aria-label="主要導覽"><a href="#features">功能</a><a href="#scenarios">應用情境</a><a href="#faq">常見問題</a></nav>
+      <div class="header-tools">
+        <label class="language-control" hidden><span class="sr-only">網站語言</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><select id="site-language" aria-label="網站語言"><option value="en" lang="en" data-no-translate>English</option><option value="zh-Hant" lang="zh-Hant" data-no-translate>繁體中文</option><option value="zh-Hans" lang="zh-Hans" data-no-translate>简体中文</option></select></label>
+        <a class="button small header-cta" href="#scenarios">試跑示範 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <p id="language-notice" class="language-notice wrap" role="status" hidden></p>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
+    <section class="hero wrap" id="home" data-screen="S1" data-requirement="FR-R1 FR-R2 FR-R9" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span> WINDOWS 按鍵自動化工具</p>
-        <h1 id="hero-title">把重複按鍵，<br>交給 <span>AutoKey.</span></h1>
-        <p class="hero-description">把連點與長壓整理成群組。<br class="desktop-break">選定應用程式，用自訂快捷鍵啟動一次，或持續循環。</p>
-        <div class="hero-actions"><a class="button primary" href="#scenarios">體驗按鍵節奏 <span aria-hidden="true">↗</span></a><a class="text-link" href="#features">了解功能 <span aria-hidden="true">↓</span></a></div>
-        <p class="hero-meta">連點與長壓 <span aria-hidden="true">·</span> 自訂群組 <span aria-hidden="true">·</span> Windows</p>
+        <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span> WINDOWS 鍵盤・滑鼠自動化</p>
+        <h1 id="hero-title">連點、長壓。<br><span>按你的設定來。</span></h1>
+        <p class="hero-description">把反覆要按的鍵設好，用快捷鍵開始，也用同一個鍵停下。連點或長壓、一次或循環，由你決定。</p>
+        <div class="hero-actions"><a class="button primary" href="#scenarios">試跑按鍵示範 <span aria-hidden="true">↗</span></a><a class="text-link" href="#setup">看看怎麼設定 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-footnote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5l8-1v7H3zm10-1l8-1v8h-8zM3 13h8v7l-8-1zm10 0h8v8l-8-1z"/></svg><span>Windows 桌面工具</span><span class="divider" aria-hidden="true"></span><span>鍵盤與滑鼠左右鍵</span></div>
       </div>
-      <div class="hero-stage" aria-label="AutoKey 群組功能示意，快捷鍵 F12 可自訂，PageDown 每 2 秒連點一次">
-        <div class="keyboard-route" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="hero-key"><span class="key-corner" aria-hidden="true">↗</span><span>F12</span></div>
-        <p class="key-caption">你的啟動鍵，由你決定</p>
-        <div class="app-preview">
-          <div class="preview-title"><span><img src="./assets/autokey.svg" width="21" height="21" alt=""> AutoKey</span><span class="preview-label">功能示意</span></div>
-          <div class="preview-main">
-            <div class="preview-group"><span class="group-mark" aria-hidden="true">▤</span><div><strong>工作群組</strong><span>快捷鍵可自訂</span></div><kbd>F12</kbd></div>
-            <div class="preview-rule"><span class="rule-check" aria-hidden="true">✓</span><span class="rule-key">PageDown</span><span>連點</span><strong>2.0 <small>秒</small></strong></div>
-            <div class="preview-footer"><span>執行方式</span><span class="preview-mode"><span aria-hidden="true">↻</span> 持續循環</span></div>
-          </div>
+      <div class="hero-visual" data-component="hero-scene">
+        <div class="scene-index"><span class="mono">01 /</span><span>長壓互動</span><span class="scene-tag">原創情境示意</span></div>
+        <div class="scene stage hero-scene" id="hero-scene" data-asset="mining-scene" aria-label="採集情境示意：按住 E 時裝置發出光束，放開後停止">
+          <div class="scene-orbit orbit-one" aria-hidden="true"></div><div class="scene-orbit orbit-two" aria-hidden="true"></div>
+          <img class="world-art" src="./assets/mining-scene.svg" width="800" height="520" alt="" aria-hidden="true">
+          <svg class="beam-overlay" viewBox="0 0 800 520" aria-hidden="true"><g class="scene-beam"><path class="beam-haze" d="M334 275L510 242"/><path class="beam-core" d="M334 275L510 242"/><circle class="beam-impact" cx="510" cy="242" r="13"/><path class="beam-sparks" d="M505 223l-4-8m25 23l11-2m-21 17l7 9m-28-19l-9 5"/></g></svg>
+          <div class="scene-label"><span class="target-cross" aria-hidden="true">+</span><span>互動目標</span></div>
+          <div class="floating-input"><kbd class="hero-key">E</kbd><div><span>按住</span><strong class="mono">1.0 <span>秒</span></strong></div></div>
         </div>
-        <div class="stage-note"><span class="signal-dot" aria-hidden="true"></span> 一個快捷鍵，一組你的節奏。</div>
+        <div class="hero-console">
+          <div class="console-row"><span class="console-name"><span class="status-light" aria-hidden="true"></span><span>採集互動</span></span><span class="mono console-time">1.0s / 1.0s</span></div>
+          <div class="hero-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="hero-play-row"><p id="hero-status" role="status">按住 1 秒，放開後等 1 秒。</p><button class="play-button js-control" id="hero-play" type="button" hidden><span class="play-symbol" aria-hidden="true">▶</span><span class="hero-play-label">播放示意</span></button></div>
+        </div>
+        <p class="visual-caption">自製動畫，非遊戲實機畫面。</p>
       </div>
     </section>
 
-    <section class="features wrap section" id="features" aria-labelledby="features-title">
-      <div class="section-intro"><p class="eyebrow">少一點重複，多一點專注</p><h2 id="features-title">一次設定，<br>按你的節奏執行。</h2><p>把需要反覆操作的按鍵安排好。<br>保留控制權，也讓雙手喘口氣。</p></div>
-      <div class="feature-grid">
-        <article class="feature"><span class="feature-icon" aria-hidden="true">⌁</span><h3>連點與長壓</h3><p>為每個按鍵選擇連續點按或長壓，設定按壓時間與間隔。</p></article>
-        <article class="feature"><span class="feature-icon" aria-hidden="true">▤</span><h3>群組與快捷鍵</h3><p>把同一情境的按鍵放在一起，為每個群組指定自己的啟動鍵。</p></article>
-        <article class="feature"><span class="feature-icon" aria-hidden="true">↻</span><h3>一次，或持續循環</h3><p>需要時只執行一次，也能讓群組持續循環，再用快捷鍵停止。</p></article>
-        <article class="feature"><span class="feature-icon language-icon" aria-hidden="true">文<span>A</span></span><h3>31 種介面語言</h3><p>桌面程式預設依 Windows 顯示語言開啟，沒有相符語系時使用英文。</p></article>
+    <div class="facts-rail wrap reveal" aria-label="產品重點"><div><span class="rail-mark" aria-hidden="true">↻</span><span>執行一次，或持續循環</span></div><div><span class="rail-mark" aria-hidden="true">⌘</span><span>每組自訂啟停快捷鍵</span></div><div><span class="rail-mark mono">31</span><span>種桌面介面語言</span></div></div>
+
+    <section class="features section wrap" id="features" data-screen="S2" data-requirement="FR-R6 FR-R9" aria-labelledby="features-title">
+      <div class="section-heading reveal"><div><p class="eyebrow"><span class="section-number">01</span> 把操作設好</p><h2 id="features-title">常用的幾種操作，<br>一個地方設好。</h2></div><p class="section-description">不用寫腳本。選好按鍵、時間和執行方式，就能用群組快捷鍵控制。</p></div>
+      <div class="feature-layout">
+        <article class="feature-primary reveal"><div class="feature-top"><span class="feature-caption">按壓與間隔</span><span class="plus-mark" aria-hidden="true">+</span></div><h3>按多久，隔多久，<br>都能自己設定。</h3><p>連點適合重複點按；長壓會按住指定秒數，再放開。每個按鍵都能各自調整。</p><div class="timing-illustration" aria-hidden="true"><div class="timing-key">E</div><div class="timing-lines"><div class="timing-track"><span class="long-pulse"></span><span class="long-pulse"></span></div><div class="tick-marks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="timing-track short"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="timing-legend"><span><i></i>按住</span><span><i></i>放開／等待</span></div></article>
+        <div class="feature-stack">
+          <article class="feature-row reveal"><div class="feature-icon mouse-icon" aria-hidden="true"><svg viewBox="0 0 64 76"><path d="M10 31c0-32 44-32 44 0v19c0 31-44 31-44 0Z"/><path d="M32 6v24M10 33h44"/><path class="mouse-left" d="M13 29C13 16 21 9 29 9v20Z"/><rect x="29" y="20" width="6" height="13" rx="3"/></svg></div><div><h3>滑鼠也能交給它。</h3><p>左鍵、右鍵都支援連點與長壓。游標放在哪裡，就從那個位置按下；AutoKey 不會移動游標。</p></div></article>
+          <article class="feature-row reveal"><div class="feature-icon key-stack" aria-hidden="true"><kbd>F8</kbd><span>↳</span></div><div><h3>每一組，都有啟停鍵。</h3><p>把同一用途的按鍵放進群組，設定自己的快捷鍵。再按一次就停止，也能在程式中停止全部。</p></div></article>
+          <article class="feature-row reveal"><div class="feature-icon record-icon" aria-hidden="true"><span></span><svg viewBox="0 0 48 48"><path d="M11 11h26v26H11zM18 24h12M24 18v12"/></svg></div><div><h3>直接按下，要設定的鍵。</h3><p>按「錄製按鍵」，再按下鍵盤按鍵；滑鼠左右鍵請在錄製區按下。確認結果後儲存。</p><span class="small-note">錄製的是單一按鍵或快捷鍵，不是整套操作。</span></div></article>
+        </div>
       </div>
     </section>
 
-    <section class="scenarios-section section" id="scenarios" aria-labelledby="scenarios-title">
+    <section class="studio-section section" id="scenarios" data-screen="S3" data-requirement="FR-R3 FR-R4 FR-R5 FR-R8" aria-labelledby="studio-title">
       <div class="wrap">
-        <div class="section-heading"><div><p class="eyebrow">先在這裡，感受節奏</p><h2 id="scenarios-title">從日常工作，到遊戲練習。</h2></div><p class="section-aside">每個情境，都有適合的設定。<br>選一個，看看按鍵如何運作。</p></div>
-        <p class="demo-disclaimer"><span aria-hidden="true">ⓘ</span> 互動示意只在這個網頁內運作，不會控制你的應用程式。</p>
-        <div class="scenario-tabs" aria-label="應用情境"><button type="button" id="tab-work" data-tab="work">日常工作</button><button type="button" id="tab-game" data-tab="game">遊戲掛機</button><button type="button" id="tab-fight" data-tab="fight">格鬥指令拆解</button></div>
-        <noscript><p class="noscript-message">啟用 JavaScript 即可試跑頁內示範。以下情境說明與相容性資訊仍可直接閱讀。</p></noscript>
+        <div class="section-heading reveal"><div><p class="eyebrow"><span class="section-number">02</span> 先試一下</p><h2 id="studio-title">看得見的按鍵節奏。</h2></div><p class="section-description">選個情境，按下開始。看看連點和長壓的差別，也試試隨時停下。</p></div>
+        <p class="demo-disclaimer"><span class="notice-icon" aria-hidden="true">i</span><span>示範只在這個網頁播放，不會操作你的電腦。</span></p>
+        <div class="scenario-tabs" aria-label="應用情境"><button type="button" id="tab-game" data-tab="game"><span class="tab-number" aria-hidden="true">01</span><span>長壓互動</span><span class="tab-arrow" aria-hidden="true">↗</span></button><button type="button" id="tab-mouse" data-tab="mouse"><span class="tab-number" aria-hidden="true">02</span><span>滑鼠連點</span><span class="tab-arrow" aria-hidden="true">↗</span></button><button type="button" id="tab-work" data-tab="work"><span class="tab-number" aria-hidden="true">03</span><span>定時翻頁</span><span class="tab-arrow" aria-hidden="true">↗</span></button></div>
+        <noscript><p class="noscript-message">開啟 JavaScript 就能播放示範。以下情境與功能說明仍可直接閱讀。</p></noscript>
 
-        <section class="scenario-panel" id="panel-work" aria-labelledby="tab-work" data-panel="work">
-          <div class="scenario-copy"><p class="scenario-category">閱讀 · 檢視 · 重複操作</p><h3>讓瀏覽節奏，<br>更從容一點。</h3><p>在接受 PageDown 的閱讀或檢視工具裡，按設定節奏翻閱內容。你專注於內容，AutoKey 負責重複的那一下。</p><dl class="rule-list"><div><dt>按鍵</dt><dd><kbd>PageDown</kbd></dd></div><div><dt>模式</dt><dd>連點</dd></div><div><dt>間隔</dt><dd>2 秒</dd></div></dl><a class="inline-link" href="#compatibility">先了解前景與背景相容性 <span aria-hidden="true">↗</span></a></div>
-          <div class="simulator" data-simulator="work">
-            <div class="simulator-heading"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>閱讀檢視器</span><span class="mini-label">網頁示意</span></div>
-            <div class="reading-scene"><div class="reading-header"><span>今日閱讀清單</span><span class="reading-page">01 / 04</span></div><ol class="reading-list"><li class="is-current"><span>01</span><div><strong>為工作保留一段專注時間</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span>02</span><div><strong>把重複步驟整理成習慣</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span>03</span><div><strong>讓工具配合自己的節奏</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span>04</span><div><strong>留一點空間，思考下一步</strong><span class="text-lines" aria-hidden="true"></span></div></li></ol></div>
-            <div class="simulator-keyrow"><kbd class="demo-key">PageDown</kbd><div class="rhythm-track" aria-label="最近 4 次按鍵節奏"><span></span><span></span><span></span><span></span></div><span class="demo-count">0 次</span></div>
-            <div class="demo-controls" hidden><p class="demo-status" role="status" aria-live="polite">尚未開始 · 網頁示意</p><div class="control-buttons"><button class="button secondary once-button" type="button">試跑一次</button><button class="button primary loop-button" type="button">開始循環 <span aria-hidden="true">↻</span></button></div></div>
+        <section class="scenario-panel" id="panel-game" data-panel="game" aria-labelledby="tab-game">
+          <div class="scenario-copy"><span class="scenario-category">遊戲情境示意</span><h3>按住一秒。<br>放開，再來一次。</h3><p>像是需要按住互動鍵的採集動作。設定長壓時間，再留一段間隔，就能重複同樣的操作。</p><dl class="rule-list"><div><dt>按鍵</dt><dd><kbd>E</kbd></dd></div><div><dt>按住</dt><dd>1 秒</dd></div><div><dt>間隔</dt><dd>1 秒</dd></div></dl><p class="scenario-limit">僅適用於允許自動化、且接受按鍵訊息的遊戲。此處不代表特定遊戲已通過測試。</p></div>
+          <div class="simulator" data-simulator="game" data-state="idle">
+            <div class="simulator-bar"><span><span class="window-indicator" aria-hidden="true"></span><span>採集練習場</span></span><span class="scene-tag">網頁示意</span></div>
+            <div class="scene stage game-stage" aria-label="長壓 E 的採集示意"><img class="world-art" src="./assets/mining-scene.svg" width="800" height="520" alt="" aria-hidden="true"><svg class="beam-overlay" viewBox="0 0 800 520" aria-hidden="true"><g class="scene-beam"><path class="beam-haze" d="M334 275L510 242"/><path class="beam-core" d="M334 275L510 242"/><circle class="beam-impact" cx="510" cy="242" r="13"/><path class="beam-sparks" d="M505 223l-4-8m25 23l11-2m-21 17l7 9m-28-19l-9 5"/></g></svg><div class="game-objective"><span class="target-cross" aria-hidden="true">+</span><span>按住 E，啟動採集裝置</span></div><div class="hold-readout"><kbd class="demo-key">E</kbd><div><span class="phase-label">等待開始</span><div class="hold-meter" aria-hidden="true"><span></span></div></div><span class="mono">1.0s</span></div></div>
+            <div class="simulator-footer"><div class="demo-feedback"><p class="demo-status" role="status">準備就緒</p><span class="demo-count">0 次</span></div><div class="demo-controls" hidden><button class="button secondary once-button" type="button">執行一次</button><button class="button primary loop-button" type="button">開始循環</button></div></div>
           </div>
         </section>
 
-        <section class="scenario-panel" id="panel-game" aria-labelledby="tab-game" data-panel="game">
-          <div class="scenario-copy"><p class="scenario-category">僅限允許自動化的環境</p><h3>重複操作，<br>交給固定節奏。</h3><p>在允許自動化且接受按鍵訊息的遊戲中，將重複互動整理為按鍵規則。像是長壓互動鍵，再留一秒休息。</p><dl class="rule-list"><div><dt>按鍵</dt><dd><kbd>E</kbd></dd></div><div><dt>模式</dt><dd>長壓 1 秒</dd></div><div><dt>間隔</dt><dd>1 秒</dd></div></dl><p class="scenario-footnote">遊戲規則與輸入方式各不相同，請先確認可用範圍。此處不代表特定遊戲已通過相容性測試。</p></div>
-          <div class="simulator" data-simulator="game">
-            <div class="simulator-heading"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>互動練習場</span><span class="mini-label">網頁示意</span></div>
-            <div class="game-scene"><div class="game-reticle" aria-hidden="true"><span>+</span></div><p>長壓互動</p><div class="hold-meter"><span></span></div><div class="game-timing"><span class="hold-label">等待開始</span><span>1.0 秒</span></div></div>
-            <div class="simulator-keyrow"><kbd class="demo-key">E</kbd><div class="rhythm-track" aria-label="最近 4 次按鍵節奏"><span></span><span></span><span></span><span></span></div><span class="demo-count">0 次</span></div>
-            <div class="demo-controls" hidden><p class="demo-status" role="status" aria-live="polite">尚未開始 · 網頁示意</p><div class="control-buttons"><button class="button secondary once-button" type="button">試跑一次</button><button class="button primary loop-button" type="button">開始循環 <span aria-hidden="true">↻</span></button></div></div>
-          </div>
+        <section class="scenario-panel" id="panel-mouse" data-panel="mouse" aria-labelledby="tab-mouse">
+          <div class="scenario-copy"><span class="scenario-category">滑鼠操作示意</span><h3>位置放好，<br>重複點按。</h3><p>這個範例每半秒按一次滑鼠左鍵。AutoKey 使用每次按下時的游標位置，不會替你移動滑鼠。</p><dl class="rule-list"><div><dt>按鍵</dt><dd>滑鼠左鍵</dd></div><div><dt>模式</dt><dd>連點</dd></div><div><dt>間隔</dt><dd>0.5 秒</dd></div></dl><p class="scenario-limit">先把游標移到目標視窗內，再啟動。實際是否回應，仍取決於目標程式。</p></div>
+          <div class="simulator" data-simulator="mouse" data-state="idle"><div class="simulator-bar"><span><span class="window-indicator" aria-hidden="true"></span><span>點按練習台</span></span><span class="scene-tag">網頁示意</span></div><div class="mouse-stage stage"><div class="target-grid" aria-hidden="true"></div><div class="mouse-target" aria-hidden="true"><div class="target-ring ring-outer"></div><div class="target-ring ring-inner"></div><div class="target-core"><svg viewBox="0 0 64 64"><path d="M32 9l20 12v22L32 55 12 43V21Z"/><path d="M12 21l20 12 20-12M32 33v22M32 9v24"/></svg></div><div class="click-ripple"></div><svg class="fixed-cursor" viewBox="0 0 40 48"><path d="M4 3v33l9-8 8 16 7-4-9-14 13-3Z"/></svg></div><div class="mouse-coordinate"><span class="crosshair-mark" aria-hidden="true">⌖</span><span>游標位置固定</span></div><div class="mouse-key-readout"><kbd class="demo-key"><svg viewBox="0 0 24 30" aria-hidden="true"><path d="M3 12C3 0 21 0 21 12v8c0 12-18 12-18 0Z"/><path d="M12 3v10M3 13h18"/></svg><span>左鍵</span></kbd><span class="phase-label">等待開始</span></div></div><div class="simulator-footer"><div class="demo-feedback"><p class="demo-status" role="status">準備就緒</p><span class="demo-count">0 次</span></div><div class="demo-controls" hidden><button class="button secondary once-button" type="button">執行一次</button><button class="button primary loop-button" type="button">開始循環</button></div></div></div>
         </section>
 
-        <section class="scenario-panel" id="panel-fight" aria-labelledby="tab-fight" data-panel="fight">
-          <div class="scenario-copy"><p class="scenario-category amber">複雜連招尚未支援</p><h3>看懂順序，<br>也看懂能力邊界。</h3><p>格鬥指令通常需要方向、順序與精確時機。把複雜操作拆成幾個步驟，可以更清楚地理解每次輸入。</p><p class="scenario-footnote">現版 AutoKey 適合連點、長壓與群組控制。群組內的按鍵同時起算，並非依序執行的連招編輯器。</p><a class="inline-link" href="#features">了解現版的按鍵功能 <span aria-hidden="true">↗</span></a></div>
-          <div class="fight-diagram"><div class="simulator-heading"><span>方向與按鍵的順序</span><span class="mini-label amber">靜態拆解</span></div><ol class="combo-steps"><li><kbd>↓</kbd><span>向下</span></li><li><kbd>→</kbd><span>向前</span></li><li><kbd>P</kbd><span>攻擊鍵</span></li></ol><div class="sequence-line" aria-hidden="true"><span></span><span></span><span></span></div><p class="combo-caption">方向輸入 <span aria-hidden="true">→</span> 按鍵輸入</p><p class="combo-note">這是指令拆解示意。現版群組內按鍵同時起算，尚未支援依序輸出連招，也不保證組合鍵效果。</p></div>
+        <section class="scenario-panel" id="panel-work" data-panel="work" aria-labelledby="tab-work">
+          <div class="scenario-copy"><span class="scenario-category">閱讀操作示意</span><h3>每隔兩秒，<br>往下翻一頁。</h3><p>把 PageDown 設成連點，依固定間隔翻閱內容。想停下來細看，再按一次群組快捷鍵就好。</p><dl class="rule-list"><div><dt>按鍵</dt><dd><kbd>PageDown</kbd></dd></div><div><dt>模式</dt><dd>連點</dd></div><div><dt>間隔</dt><dd>2 秒</dd></div></dl><p class="scenario-limit">適用於接受 PageDown 的閱讀或檢視工具。請先用單一按鍵確認反應。</p></div>
+          <div class="simulator" data-simulator="work" data-state="idle"><div class="simulator-bar"><span><span class="window-indicator" aria-hidden="true"></span><span>閱讀檢視器</span></span><span class="scene-tag">網頁示意</span></div><div class="work-stage stage"><div class="document-sidebar" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="reading-document"><div class="document-top"><span>工作筆記</span><span class="reading-page mono">01 / 04</span></div><ol class="reading-list"><li class="is-current"><span class="mono">01</span><div><strong>專案摘要</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span class="mono">02</span><div><strong>操作步驟</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span class="mono">03</span><div><strong>檢查項目</strong><span class="text-lines" aria-hidden="true"></span></div></li><li><span class="mono">04</span><div><strong>參考資料</strong><span class="text-lines" aria-hidden="true"></span></div></li></ol></div><div class="work-key-readout"><kbd class="demo-key">PageDown</kbd><span class="phase-label">等待開始</span></div></div><div class="simulator-footer"><div class="demo-feedback"><p class="demo-status" role="status">準備就緒</p><span class="demo-count">0 次</span></div><div class="demo-controls" hidden><button class="button secondary once-button" type="button">執行一次</button><button class="button primary loop-button" type="button">開始循環</button></div></div></div>
         </section>
       </div>
     </section>
 
-    <section class="compatibility wrap section" id="compatibility" aria-labelledby="compatibility-title">
-      <div class="section-intro"><p class="eyebrow">讓預期，和實際一樣清楚</p><h2 id="compatibility-title">背景接收，<br>取決於目標程式。</h2><p>AutoKey 可向指定視窗傳送按鍵訊息。<strong>目標願不願意接收</strong>，由它本身的設計決定。</p></div>
-      <div class="compatibility-details"><article class="compatibility-item"><span class="window-symbol foreground-symbol" aria-hidden="true"></span><div><h3>當前視窗操作</h3><p>可用於接受按鍵訊息的前景視窗。實際相容性依程式而定；部分遊戲或程式使用不同輸入方式，即使保持前景，也可能不接受。</p></div></article><article class="compatibility-item"><span class="window-symbol background-symbol" aria-hidden="true"></span><div><h3>切換視窗後繼續</h3><p>只有本身允許在背景接收並處理按鍵訊息的程式，才會在你操作其他視窗時繼續回應。AutoKey 不會把焦點搶回來，也不需因切回視窗反覆重新啟動。</p></div></article><p class="compatibility-note">「執行中」代表正在傳送指令，不代表目標程式已採納。建議先以簡單按鍵確認反應，再設定群組。</p></div>
+    <section class="setup section wrap" id="setup" data-screen="S4" data-requirement="FR-R6 FR-R9" aria-labelledby="setup-title"><div class="section-heading reveal"><div><p class="eyebrow"><span class="section-number">03</span> 開始使用</p><h2 id="setup-title">選視窗。加按鍵。<br>用快捷鍵啟動。</h2></div><p class="section-description">在桌面程式裡完成這三步。設定會保存在本機，下次開啟後重新選擇目標即可。</p></div>
+      <ol class="setup-steps">
+        <li class="reveal"><div class="step-illustration choose-window" aria-hidden="true"><div class="mini-window back-window"><i></i><i></i><i></i></div><div class="mini-window front-window"><div class="mini-title"><i></i><i></i><i></i></div><div class="selected-window"><span>✓</span><div></div></div><div class="mini-line"></div></div><span class="step-arrow">↗</span></div><span class="step-number mono">01</span><h3>選定目標視窗</h3><p>指定接收輸入的程式。先送出一個簡單按鍵，確認它有反應。</p></li>
+        <li class="reveal"><div class="step-illustration record-key" aria-hidden="true"><div class="record-dots"><i></i><i></i><i></i></div><kbd>E</kbd><div class="seconds-label mono">1.0s<span>↔</span>1.0s</div></div><span class="step-number mono">02</span><h3>加入按鍵與時間</h3><p>建立群組，錄製要用的鍵。選連點或長壓，再設定時間和間隔。</p></li>
+        <li class="reveal"><div class="step-illustration start-key" aria-hidden="true"><span class="key-path"></span><kbd>F8</kbd><span class="running-symbol">↻</span></div><span class="step-number mono">03</span><h3>用快捷鍵開始、停止</h3><p>選擇執行一次或循環，再設定群組快捷鍵。F8 只是例子，啟停鍵由你決定。</p></li>
+      </ol>
     </section>
 
-    <section class="getting-started wrap section" aria-labelledby="start-title"><div class="section-heading"><div><p class="eyebrow">你的下一組按鍵</p><h2 id="start-title">設定好，剩下的交給節奏。</h2></div><span class="platform-label">Windows 桌面程式</span></div><ol class="start-steps"><li><span class="step-number">01</span><h3>選擇目標</h3><p>指定要接收按鍵的應用程式，先確認它能回應。</p></li><li><span class="step-number">02</span><h3>整理你的群組</h3><p>加入按鍵，選擇連點或長壓，再調整時間與間隔。</p></li><li><span class="step-number">03</span><h3>用快捷鍵啟動</h3><p>設定每組快捷鍵，選擇執行一次，或開始持續循環。</p></li></ol></section>
+    <section class="compatibility section" id="compatibility" data-screen="S5" data-requirement="FR-R6" aria-labelledby="compatibility-title"><div class="wrap compatibility-layout"><div class="compatibility-intro reveal"><p class="eyebrow"><span class="section-number">04</span> 用之前，先確認</p><h2 id="compatibility-title">能不能回應，<br>要看目標程式。</h2><p>AutoKey 會向指定視窗傳送按鍵訊息。顯示「執行中」，代表正在傳送，不代表對方已收到並採用。</p><a class="text-link" href="#faq">查看常見問題 <span aria-hidden="true">↗</span></a><div class="window-art" aria-hidden="true"><div class="outline-window"><span></span></div><div class="solid-window"><span></span><div class="window-signal">↗</div></div><div class="window-connector"></div></div></div><div class="compatibility-rules"><article class="reveal"><span class="rule-number mono">01 /</span><div><h3>先試一個鍵，再設定整組。</h3><p>有些程式採用不同的輸入方式，即使視窗在前景也可能不接受。保持前景或提高權限，都無法保證相容。</p></div></article><article class="reveal"><span class="rule-number mono">02 /</span><div><h3>背景操作，需要目標支援。</h3><p>只有接受背景按鍵訊息的程式，才會在切換視窗後繼續回應。AutoKey 不會把焦點搶回來。</p></div></article><article class="reveal"><span class="rule-number mono">03 /</span><div><h3>同組按鍵一起開始。</h3><p>群組內的按鍵同時起算。目前不支援依序輸出的動作或精確連招，多鍵組合效果也取決於目標程式。</p><div class="parallel-tracks" aria-label="兩個按鍵從同一時間開始的示意"><span class="sync-line" aria-hidden="true"></span><div><kbd>A</kbd><span></span><span></span></div><div><kbd>B</kbd><span></span></div></div></div></article></div></div></section>
 
-    <section class="faq wrap section" id="faq" aria-labelledby="faq-title"><div class="section-intro"><p class="eyebrow">使用之前，先了解</p><h2 id="faq-title">你可能想問。</h2><p>功能、相容性，<br>還有接下來的計畫。</p></div><div class="faq-list">
-      <details><summary>切換到其他視窗，還能繼續嗎？</summary><p>可以，前提是目標程式接受背景按鍵訊息。AutoKey 不會切換你的操作焦點；切回目標視窗也不需要反覆按快捷鍵重新啟動。鎖定、休眠或目標關閉時的停止規則，請依桌面程式說明操作。</p></details>
-      <details><summary>為什麼顯示執行中，目標卻沒有反應？</summary><p>傳送訊息不代表目標已採納。程式的輸入方式、背景接收設計或權限都可能影響結果。請先用簡單按鍵實際測試；保持前景或提高權限，也無法保證所有程式都相容。</p></details>
-      <details><summary>可以設定一組複雜連招嗎？</summary><p>目前支援把連點與長壓按鍵整理成群組，群組內按鍵同時起算。尚未支援依序輸出的指令序列與精確連招，也不保證多鍵組合效果。格鬥情境是靜態拆解示意，並非現有連招功能。</p></details>
-      <details><summary>桌面程式支援哪些介面語言？</summary><p>桌面程式支援 Steam 平台清單的 31 種語系。語言選項設為「預設」時，依 Windows 顯示語言開啟，找不到相符語系則使用英文；也能自行切換。官網提供英文、繁體中文與簡體中文。</p></details>
-      <details><summary>如何取得程式與 Steam 版本？</summary><p>Steam 版本準備中，尚未正式上架。商店頁面與正式下載資訊將另行公告；目前可以先在這個頁面體驗操作示意，了解工具的能力與使用限制。</p></details>
-      <details><summary>設定會自動保存、跨電腦同步嗎？</summary><p>桌面程式會在本機保存按鍵群組與語言偏好。Steam Cloud 同步流程正在準備，尚待 Steam 後台啟用與雙機驗收；目前不宣稱已提供跨電腦雲端同步。</p></details>
+    <section class="faq section wrap" id="faq" data-screen="S6" data-requirement="FR-R6 FR-R8" aria-labelledby="faq-title"><div class="faq-heading reveal"><p class="eyebrow"><span class="section-number">05</span> 常見問題</p><h2 id="faq-title">還有幾件事，<br>你可能想知道。</h2><p>功能、設定與取得方式。</p></div><div class="faq-list">
+      <details><summary>所有遊戲都能用嗎？<span aria-hidden="true">+</span></summary><p>不一定。遊戲必須允許自動化，並且能接收 AutoKey 傳送的按鍵訊息。本頁的採集情境是自製動畫，不代表任何特定遊戲已通過相容性測試。</p></details>
+      <details><summary>可以錄製一整套操作嗎？<span aria-hidden="true">+</span></summary><p>目前錄製功能用來設定單一鍵盤鍵、滑鼠左／右鍵，或群組快捷鍵，不會記錄一整段操作。群組內的按鍵同時起算，也不是依照清單順序執行。</p></details>
+      <details><summary>滑鼠會自己移到指定位置嗎？<span aria-hidden="true">+</span></summary><p>不會。每次按下都使用當下的游標位置，放開時沿用該次按下位置。啟動前請把游標移到目標視窗內；若在視窗外，目標可能忽略這次輸入。</p></details>
+      <details><summary>設定會保存、跨電腦同步嗎？<span aria-hidden="true">+</span></summary><p>群組與語言偏好會保存在本機。首發版本不提供 Steam Cloud，也不會自動跨電腦同步。換電腦前請先備份自己的設定，重開程式後需重新選擇目標視窗。</p></details>
+      <details><summary>桌面程式有哪些語言？<span aria-hidden="true">+</span></summary><p>桌面介面支援 31 種語言。預設跟隨 Windows 顯示語言，沒有對應時使用英文，也能手動選擇。官網提供 English、繁體中文和简体中文。</p></details>
+      <details><summary>要去哪裡下載？<span aria-hidden="true">+</span></summary><p>Steam 發布資訊待公告。目前可以先試跑這個網頁的示範，了解操作方式與使用限制。</p></details>
     </div></section>
 
-    <section class="closing wrap" aria-labelledby="closing-title"><div><p class="eyebrow">把時間，留給真正想做的事</p><h2 id="closing-title">少按幾次。多一點自由。</h2></div><a class="button primary" href="#scenarios">體驗按鍵節奏 <span aria-hidden="true">↗</span></a></section>
+    <section class="closing wrap reveal" id="release" data-screen="S6" aria-labelledby="closing-title"><div><p class="eyebrow">從一個按鍵開始</p><h2 id="closing-title">試試你要的節奏。</h2><p>先看操作，再決定適不適合。</p></div><div class="closing-action"><a class="button primary" href="#scenarios">試跑按鍵示範 <span aria-hidden="true">↗</span></a><span class="release-note"><span aria-hidden="true"></span>Steam 發布資訊待公告</span></div></section>
   </main>
-  <footer class="site-footer wrap"><a class="brand" href="#" aria-label="回到 AutoKey 首頁"><img src="./assets/autokey.svg" width="32" height="32" alt=""><span>AutoKey<span class="brand-dot">.</span></span></a><p>Windows 按鍵自動化工具</p><div class="release-status"><span class="status-dot" aria-hidden="true"></span> Steam 版本準備中</div><span class="copyright">© 2026 AutoKey</span></footer>
+  <footer class="site-footer wrap"><a class="brand" href="#home" aria-label="回到 AutoKey 首頁"><img src="./assets/autokey.svg" width="30" height="30" alt=""><span>AutoKey<span class="brand-dot">.</span></span></a><p>Windows 鍵盤與滑鼠自動化工具</p><span class="copyright">© 2026 AutoKey</span><a class="back-top" href="#home" aria-label="回到頁首">↑</a></footer>
 </body>
 </html>

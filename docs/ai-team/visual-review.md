@@ -13,3 +13,9 @@
 | R0-review | R10／D1 | 0 | 1440全頁與320流程實看、320無overflow；6個節點分別連至S1–S6 | 初次製作通過 |
 
 實際截圖見 `design/redesign-v1/pm-design-review.md`，獨立結果與限制見 `design/redesign-v1/qa-review.md`。以上為設計階段審查；使用者確認與正式網站實作／驗收尚未完成。這些次數會沿用到後續正式實作，不重置。
+
+## D1 正式落地設計師複核（2026-10-22）
+
+使用者已批准`bd7fa98` D1。正式HTML／CSS／app／場景SVG逐位元沿用；沒有新增美術修訂，以上次數不變。UI/UX依Taste與impeccable檢視正式全頁、層次、文字、資產位置與必要內容，與批准稿沒有差異，無新增矯正清單。
+
+在相同DPR1、reduced-motion（固定截圖時間，不取代一般動畫測試）、locale與viewport下，1440×1000繁中及390×844英文兩組全頁PNG逐位元相同。證據：`output/playwright/redesign-production-{design|product}-{1440|390}.png`。實際動畫及各情境由正式旅程驗證另查，結果在`redesign-validation.md`；不只憑來源檔案相同宣稱呈現一致。
