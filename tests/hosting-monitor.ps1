@@ -39,6 +39,25 @@ try {
     $lock = [IO.File]::Open((Join-Path $state 'monitor.lock'), 'OpenOrCreate', 'ReadWrite', 'None')
     try { Assert ((@(Run-Monitor))[-1] -eq 0) 'Overlapping monitor is skipped' } finally { $lock.Dispose() }
     Assert ((@(Run-Monitor @('-Stop')))[-1] -eq 0) 'Owned origin can be stopped'
+    $recordPath = Join-Path $state 'process.json'
+    $damagedRecords = @(
+        @{ name='zero-filled'; content=([string][char]0) * 76 },
+        @{ name='empty'; content='' },
+        @{ name='truncated'; content='{"pid":' },
+        @{ name='missing timestamp'; content='{"pid":123}' },
+        @{ name='invalid timestamp'; content='{"pid":123,"createdAtUtc":"invalid"}' }
+    )
+    foreach ($damaged in $damagedRecords) {
+        [IO.File]::WriteAllText($recordPath, $damaged.content)
+        $damagedHash = (Get-FileHash -LiteralPath $recordPath).Hash
+        Assert ((@(Run-Monitor))[-1] -eq 0) "Monitor recovers from a $($damaged.name) process record"
+        $repaired = Get-Content (Join-Path $state 'status.json') -Raw | ConvertFrom-Json
+        $health = Invoke-RestMethod -Uri 'http://127.0.0.1:19181/healthz' -TimeoutSec 2
+        Assert ($repaired.localHealthy -and $repaired.restarted -and $health.ok -and $health.pid -eq $repaired.pid) 'Recovered origin serves healthy HTTP'
+        $saved = @(Get-ChildItem -LiteralPath $state -Filter 'process.json.invalid-*' | Where-Object { (Get-FileHash -LiteralPath $_.FullName).Hash -eq $damagedHash })
+        Assert ($saved.Count -gt 0) 'Damaged process record is preserved for diagnosis'
+        Assert ((@(Run-Monitor @('-Stop')))[-1] -eq 0) 'Recovered origin can be stopped safely'
+    }
     $foreignScript = Join-Path $scratch 'foreign.mjs'
     [IO.File]::WriteAllText($foreignScript, "import http from 'node:http'; http.createServer((q,s)=>{s.setHeader('Content-Type','text/plain');s.end('unrelated');}).listen(19181, '127.0.0.1');")
     $foreign = Start-Process -FilePath $node -ArgumentList ('"{0}"' -f $foreignScript) -WindowStyle Hidden -PassThru
@@ -51,6 +70,9 @@ try {
     Assert ($failure[-1] -eq 1) 'Foreign listener causes a clear failure'
     Assert (-not $foreign.HasExited) 'A stale PID never kills a different Node application'
     Assert ((Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:19181' -TimeoutSec 2).Content -eq 'unrelated') 'Foreign service remains reachable'
+    @{pid=$foreign.Id; createdAtUtc='invalid'} | ConvertTo-Json | Set-Content -LiteralPath $recordPath -Encoding UTF8
+    Assert ((@(Run-Monitor))[-1] -eq 1) 'Corrupt state with an occupied port still fails safely'
+    Assert (-not $foreign.HasExited -and (Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:19181' -TimeoutSec 2).Content -eq 'unrelated') 'Corrupt state never authorizes stopping another service'
 } finally {
     if ($foreign -and -not $foreign.HasExited) { Stop-Process -Id $foreign.Id -Force }
     Run-Monitor @('-Stop') | Out-Null

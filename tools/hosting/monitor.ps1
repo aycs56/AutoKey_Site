@@ -47,9 +47,25 @@ function Get-OwnedProcess([int]$OwnedProcessId) {
 }
 function Stop-OwnedProcess {
     if (-not (Test-Path -LiteralPath $statePath)) { return }
-    $record = Get-Content -LiteralPath $statePath -Raw -Encoding UTF8 | ConvertFrom-Json
-    $candidate = Get-OwnedProcess ([int]$record.pid)
-    if ($candidate -and ([DateTimeOffset]::Parse($record.createdAtUtc).UtcDateTime -ne $candidate.CreationDate.ToUniversalTime())) {
+    $rawRecord = [IO.File]::ReadAllText($statePath)
+    try {
+        $record = $rawRecord | ConvertFrom-Json
+        if ($null -eq $record -or
+            $record.pid -isnot [int] -or $record.pid -le 0 -or
+            $record.createdAtUtc -isnot [string] -or [string]::IsNullOrWhiteSpace($record.createdAtUtc)) {
+            throw 'Invalid process identity.'
+        }
+        $createdAtUtc = [DateTimeOffset]::Parse($record.createdAtUtc).UtcDateTime
+    } catch {
+        # Damaged bookkeeping cannot authorize a kill or block recovery forever.
+        # The caller still refuses to start if any process occupies the port.
+        $invalidPath = $statePath + '.invalid-' + [guid]::NewGuid().ToString('N')
+        Move-Item -LiteralPath $statePath -Destination $invalidPath
+        Write-Log "Invalid process record preserved at $invalidPath; no process was stopped."
+        return
+    }
+    $candidate = Get-OwnedProcess $record.pid
+    if ($candidate -and ($createdAtUtc -ne $candidate.CreationDate.ToUniversalTime())) {
         $candidate = $null
     }
     if ($candidate) {

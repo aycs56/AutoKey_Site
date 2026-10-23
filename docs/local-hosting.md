@@ -70,6 +70,23 @@ Start-ScheduledTask -TaskName 'AutoKey Site Monitor'
 
 安裝前保存 Caddyfile 至 backups；候選驗證與併發修改檢查通過後才 reload，reload 失敗自動回復原設定。若之後需要撤銷本站公開入口，只移除 `BEGIN/END AUTOKEY SITE` 區段並 validate/reload，不可用舊完整備份覆蓋後來新增的其他站台。保留 releases 與 config 備份；版本回復應在停止本站後選取對應快照，再重啟驗證。安裝未完成時先查看 `install-result.json`，修正原因後重新執行，不盲目重試。
 
+## 只修復監控程式
+
+2026-10-24 的 502 來自 origin 未啟動，且 `run/process.json` 的 76 個位元組全部為零值，讓每次監控都在 JSON 解析時退出。記錄自 10 月 2 日起出現此錯誤；檔案損毀本身的原因無法由現有證據判定。
+
+`tools/hosting/monitor.ps1` 現在驗證 PID 與程序建立時間。若狀態檔不是有效記錄，將原檔移至 `process.json.invalid-<唯一識別碼>` 保存，且不以該記錄終止程序。只有連接埠沒有其他 listener 才可繼續啟動；健康 origin、其他 Node 程序及佔用埠的服務均保留。34 項實際監控測試涵蓋零值、空檔、截斷 JSON、缺少／無效時間與外部程序保護。
+
+這類維運只替換已驗證的 monitor，不執行完整安裝器，也不更新網頁快照。管理員操作前先保留 `run/process.json`、`status.json` 與 `monitor.log`，確認安裝標記為 `autokey-site`、正式 config 與來源 hash 正確、排程為 LOCAL SERVICE 且未執行中。鎖住 `run/monitor.lock`，備份正式 monitor 至 `backups`，複製並比對修正檔，再釋放鎖並啟動原排程：
+
+```powershell
+Start-ScheduledTask -TaskName 'AutoKey Site Monitor'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File D:\AutoKey_Site\tools\hosting\verify.ps1
+```
+
+確認 BootTrigger、PT1H、LastTaskResult=0、local/public health、健康 PID 保持及公開首頁／資產內容。失敗則回復剛備份的 monitor，啟動原排程並保留錯誤；不覆寫其他站台、正式 config 或版本內容。當次執行檔及驗證證據存於 `output/hosting-repair-20261024/`，透過 `repair.ps1 -DryRun` 可檢視固定路徑與 hash，實際套用需 Windows UAC。
+
+2026-10-24 05:28（台灣時間）已完成正式修復：原損毀檔隔離保留，排程首次嘗試即啟動 PID 30064，local/public health 均成功；後續檢查保留同一 PID，LastTaskResult=0，開機與每小時觸發設定讀回正確。安裝監控與修正來源 SHA256 相同，config、server、正式首頁、Caddyfile 與排程 XML 皆維持原值。公開首頁及 8 個資產皆為 HTTP 200 且逐檔符合正式快照；headless 瀏覽器載入首頁、執行「試跑一次」顯示「已完成一次示範」，console 無錯誤或警告。截圖為 `output/playwright/hosting-repair-20261024.png`；測試 origin 與本次瀏覽器均已關閉。這次未進行整機重開測試。
+
 ## 本次驗證與限制
 
 - 29 項語系、4 項建置邊界、4 項正式 HTTP、快照逐檔內容比對與 12 項實際監控測試通過。
