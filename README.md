@@ -52,6 +52,8 @@ npm.cmd run preview
 
 ## GitHub 與網站部署
 
+2026-11-13已部署至 [AutoKey正式網站](https://autokey.desktoppetstudio.com/)，包含Steam入口、介紹影片、三語文案SEO、推薦工具與GTM；推薦輪播每3秒切換。正式發布與快取驗證見[本次發布紀錄](docs/ai-team/release-20261113.md)。
+
 官網的獨立來源儲存庫為 [aycs56/AutoKey_Site](https://github.com/aycs56/AutoKey_Site)。2026-09-26 使用者已授權首次推送官網；後續同步依 [工作規範](工作規範.md) 的已確認流程與當次授權執行，先核對遠端、待送內容與建置結果：
 
 ```powershell

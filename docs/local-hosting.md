@@ -2,6 +2,10 @@
 
 2026-09-30 安裝完成。網址：https://autokey.desktoppetstudio.com/ 。A 紀錄由使用者管理，當次為 `122.116.101.243`。
 
+2026-11-13 14:07（台灣時間）已更新正式release至 `20261113-140708-765`，來源commit `7569b23`。包含Steam下載、影片、三語文案SEO、推薦工具（3秒輪播）及GTM；21個公開檔案hash與11項公開瀏覽器檢查通過。備份、初次部署復原、快取刷新及完整驗證見[發布紀錄](ai-team/release-20261113.md)。HTML維持no-cache、CSS／JS維持5分鐘快取，這次以固定發布版本 `?v=20261113` 更新資產URL；後續內容更新需同步更新版本並驗證warm／fresh訪客。
+
+以PowerShell包裝部署並保存log時，使用 `Start-Process -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput ... -RedirectStandardError ...` 並檢查ExitCode。不要在ErrorAction=Stop下用 `*>` 攔截子程序：Windows PowerShell 5.1會將Caddy的正常stderr訊息誤當終止錯誤。
+
 ## 運行方式
 
 | 項目 | 設定 |
