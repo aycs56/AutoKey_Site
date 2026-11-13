@@ -29,4 +29,14 @@ PM、UI/UX、Frontend、QA、Release 在同一代理依序執行。分類 web／
 - UI/UX 以 taste-skill／impeccable 實看設計與產品的 1440 繁中／320 英文截圖：卡片、圖示、間距、可讀性與兩箭頭位置一致；產品截圖多了操作後箭頭 hover 的既有薄荷色，非版型差異。沒有需要修正的發現，未做額外美術調整。證據 `output/playwright/remove-carousel-{design,product}-{1440,320}.png`。手機為 Chromium 模擬，未宣稱實體裝置驗收。
 - install 與原備份／回復包裝腳本 dry-run 通過，目標 `release-SEMi6f/site`；正式套用前核對來源、快照、既有 config 與部署工具 SHA256。產品變更只有移除控制與資產版本，沒有新增套件或更動伺服器。
 
-功能追溯：US-T2／FR-T3 對應移除控制、3 秒與停止行為；FR-T2 對應箭頭、方向鍵及觸控；FR-T4 對應三語／尺寸／reduced-motion；FR-T1／FR-T5 以 Header 與 SEO／Steam 鄰近檢查覆蓋。正式部署與遠端同步結果待執行後記錄。
+功能追溯：US-T2／FR-T3 對應移除控制、3 秒與停止行為；FR-T2 對應箭頭、方向鍵及觸控；FR-T4 對應三語／尺寸／reduced-motion；FR-T1／FR-T5 以 Header 與 SEO／Steam 鄰近檢查覆蓋。
+
+## 正式發布結果
+
+2026-11-13 17:59（台灣時間）發布完成，產品 commit `e1d9f4e`，正式 release `20261113-175929-117`。保留前版 `20261113-140708-765`；runtime／config／排程備份為 `C:\ProgramData\AutoKeySite\backups\release-20261113-69d503768c284e4da001459de0aef355`。install／verify 成功，local/public healthy、LOCAL SERVICE、BootTrigger／PT1H、LastTaskResult=0；驗證期間 PID 48952 穩定。其他站台路由比較一致。
+
+- 21 個正式安裝檔及公開 HTTPS 檔案 SHA256 均符合快照，證據 `deploy-result.json`、`public-integrity.json`。
+- 6 項正常快取路徑檢查通過：發布前已開啟的 warm client 普通 reload、新開手機訪客，都沒有播放／暫停按鈕、箭頭可用。HTML no-cache 與新 CSS／JS 固定版本正常，沒有停用快取、強制重新整理或隨機 query；證據 `cache-browser.txt`。
+- 正式站重跑同一組 30 項產品旅程全部通過，自動輪播實測 3000ms；無 JS 錯誤。已實看手機發布截圖。證據 `public-browser.txt`、`output/playwright/remove-carousel-public-*`。
+- 本次沒有重啟整台電腦或額外演練正式服務中斷；既有監控恢復情境由 34 項隔離測試驗證。一般 dist 的歷史 EBUSY 限制不影響本次全新快照發布。
+- GitHub dry-run 已通過；交付紀錄提交後依既有流程推送 main，最終遠端 SHA 另以工具輸出及交付回覆核對。沒有 worktree、暫存分支或未整合素材；本次 4193／4192 驗證服務已關閉，output 證據保留且不提交 Git。
