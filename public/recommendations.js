@@ -24,7 +24,6 @@
   const track = section.querySelector('.recommendations-track');
   const cards = [...track.querySelectorAll('.recommendation-card')];
   const controls = section.querySelector('.carousel-controls');
-  const toggle = section.querySelector('.carousel-toggle');
   const position = section.querySelector('.carousel-position');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const t = (key, values) => window.AutoKeyI18n.t(key, values);
@@ -42,9 +41,6 @@
     return points.reduce((best, value, index) => Math.abs(value - track.scrollLeft) < Math.abs(points[best] - track.scrollLeft) ? index : best, 0);
   }
   function render() {
-    toggle.querySelector('span').textContent = t(automatic ? '暫停輪播' : '播放輪播');
-    toggle.querySelector('[data-pause-symbol]').toggleAttribute('hidden', !automatic);
-    toggle.querySelector('[data-play-symbol]').toggleAttribute('hidden', automatic);
     position.textContent = t('第 {index} 個，共 {total} 個', { index: currentIndex() + 1, total: cards.length });
     position.setAttribute('aria-live', automatic ? 'off' : 'polite');
     track.setAttribute('aria-label', t('推薦工具輪播'));
@@ -73,11 +69,6 @@
       move(direction);
     });
   }
-  toggle.addEventListener('click', () => {
-    automatic = !automatic;
-    render();
-    schedule();
-  });
   track.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key) || event.altKey || event.ctrlKey || event.metaKey) return;
     event.preventDefault();

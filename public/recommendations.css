@@ -16,7 +16,6 @@
 .carousel-controls{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .carousel-controls button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:9px;border:1px solid var(--control);border-radius:5px;background:transparent;font-size:13px;line-height:1.5}
 .carousel-controls button:hover{background:var(--raised);color:var(--mint)}
-.carousel-toggle{margin-right:6px}
 .recommendations-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scroll-padding-inline:8px;padding:8px;margin:-8px;scrollbar-width:thin;scrollbar-color:var(--control) transparent}
 .recommendation-card{flex:0 0 calc((100% - 20px)/2);min-width:0;scroll-snap-align:start;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
 .recommendation-card>a{display:flex;flex-direction:column;align-items:flex-start;height:100%;min-height:234px;padding:28px;border-radius:8px}
@@ -29,4 +28,4 @@
 .carousel-position{margin-top:18px;color:var(--muted);font-size:12px}
 @media(max-width:1150px){.site-header nav{gap:16px}.header-inner{gap:20px}.header-tools{gap:14px}}
 @media(max-width:960px){.site-header nav{gap:12px}.header-inner{gap:16px}.recommendation-card>a{padding:22px}.recommendation-identity{gap:12px}.recommendation-identity h3{font-size:20px}}
-@media(max-width:700px){.site-header nav{position:relative;gap:4px}.tools-menu{position:static}.tools-menu summary{font-size:13px}.tools-menu-panel{right:0;top:calc(100% + 8px);width:min(300px,100%)}.site-header nav .tools-menu-panel a{justify-content:flex-start;font-size:14px;min-height:58px}.recommendations{padding-block:68px 48px}.recommendations-heading{display:block;margin-bottom:20px}.recommendations-heading h2{font-size:30px}.carousel-controls{margin-top:24px;justify-content:flex-end}.carousel-toggle{margin-right:auto}.recommendation-card{flex-basis:100%}.recommendation-card>a{min-height:238px}.recommendation-identity h3{font-size:21px}.carousel-position{margin-top:14px}}
+@media(max-width:700px){.site-header nav{position:relative;gap:4px}.tools-menu{position:static}.tools-menu summary{font-size:13px}.tools-menu-panel{right:0;top:calc(100% + 8px);width:min(300px,100%)}.site-header nav .tools-menu-panel a{justify-content:flex-start;font-size:14px;min-height:58px}.recommendations{padding-block:68px 48px}.recommendations-heading{display:block;margin-bottom:20px}.recommendations-heading h2{font-size:30px}.carousel-controls{margin-top:24px;justify-content:flex-end}.recommendation-card{flex-basis:100%}.recommendation-card>a{min-height:238px}.recommendation-identity h3{font-size:21px}.carousel-position{margin-top:14px}}
