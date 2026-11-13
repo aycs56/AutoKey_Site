@@ -55,7 +55,7 @@
     timer = setTimeout(() => {
       move(1);
       schedule();
-    }, 6000);
+    }, 3000);
   }
   function move(direction) {
     const points = stops();
