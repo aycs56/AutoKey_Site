@@ -1,0 +1,42 @@
+[
+  {
+    "id": "desktop-pet",
+    "name": "DesktopPetStudio",
+    "url": "https://www.desktoppetstudio.com/",
+    "icon": "https://www.desktoppetstudio.com/assets/images/app-icon.png",
+    "file": "desktop-pet.png",
+    "text": "製作自己的桌面寵物，設定提醒與日常互動。",
+    "sha256": "b85b66f7bc7e0a5c15b0029051c7c4439a2f18341d8ab93799361422c92b3d4c",
+    "bytes": 83708
+  },
+  {
+    "id": "r6",
+    "name": "R6 REROLL",
+    "url": "https://r6.desktoppetstudio.com/",
+    "icon": "https://r6.desktoppetstudio.com/favicon.svg",
+    "file": "r6.svg",
+    "text": "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。",
+    "sha256": "b9cc3cc9844bd834ba235ad21b3285d9db4ab97e41f91a957f8aad5028a7f39f",
+    "bytes": 242
+  },
+  {
+    "id": "ow2",
+    "name": "REROLL Overwatch 2",
+    "url": "https://ow2.desktoppetstudio.com/",
+    "icon": "https://ow2.desktoppetstudio.com/favicon.svg",
+    "file": "ow2.svg",
+    "text": "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。",
+    "sha256": "ec9db06572904b997d5e5dec96e39758b2e1de158468ab112a5783d5734540a1",
+    "bytes": 281
+  },
+  {
+    "id": "game-translation",
+    "name": "Game Translation",
+    "url": "https://gametranslation.desktoppetstudio.com/",
+    "icon": "https://gametranslation.desktoppetstudio.com/assets/app-icon.png",
+    "file": "game-translation.png",
+    "text": "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。",
+    "sha256": "ab5ffa12fd7f68694fc2d1605e895d0172e705119ac5ddd586717520bb9ef364",
+    "bytes": 22721
+  }
+]
