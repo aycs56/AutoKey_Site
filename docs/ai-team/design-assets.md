@@ -1,6 +1,6 @@
 # AutoKey 官網設計資產對照
 
-2026-11-13 SD1：新增本產品Steam header、使用者指定MP4原檔副本與原片poster。唯一新增素材對照及SHA256見[SD1素材交接](design/steam-download-v1/design-handoff.md#素材與正式目標)。現存於該設計目錄，正式目標為 `public/assets/`、`public/media/`；狀態 planned／待SD1確認，不宣稱已進正式UI。既有品牌及原創mining-scene直接沿用public的canonical來源。
+2026-11-13 SD1：新增本產品Steam header、使用者指定MP4原檔副本與原片poster。唯一新增素材對照及SHA256見[SD1素材交接](design/steam-download-v1/design-handoff.md#素材與正式目標)。SD1.1 已依直接開發指示整合至 `public/assets/`、`public/media/`，設計及正式素材逐位元沿用。既有品牌及原創mining-scene直接沿用public的canonical來源。
 
 2026-10-22 更新。正式原始碼已依使用者確認的 `design/redesign-v1/` D1整合；公開託管快照尚未替換。`ui-ux-spec.md`「按鍵節奏台」保留作舊版溯源。品牌延續桌面版本，不另創logo。
 

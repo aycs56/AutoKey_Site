@@ -1,6 +1,6 @@
 # AutoKey 官網 UI／UX 規格
 
-2026-11-13新增：Steam／三語文案與SEO／指定介紹影片的當前設計為[SD1交接](design/steam-download-v1/design-handoff.md)，狀態待使用者確認。其Link、Card、Video Player決策、全部狀態與尺寸集中於該交接；正式來源仍維持D1。後續正式整合不得以本歷史版的「商店待公告」取代已核實的Steam狀態。
+2026-11-13新增：Steam／三語文案與SEO／指定介紹影片的當前設計為[SD1交接](design/steam-download-v1/design-handoff.md)，SD1.1 已依使用者「請直接開發」整合，首屏追加「前往 Steam 下載」。其 Link、Card、Video Player 決策、全部狀態與尺寸集中於該交接；正式來源已採用 SD1.1。後續正式整合不得以本歷史版的「商店待公告」取代已核實的Steam狀態。
 
 歷史版本：2026-10-22起正式來源已依使用者確認的[D1交接規格](design/redesign-v1/design-handoff.md)整合。以下保留原版決策，不作新版視覺驗收基準。
 

@@ -1,6 +1,6 @@
 # Steam 下載入口、全站文案與 SEO
 
-版本 P3／2026-11-13（台灣）；profile：web；risk：low；depth：quick。
+版本 P4／2026-11-13（台灣）；profile：web；risk：low；depth：quick。
 
 ## 範圍與依據
 
@@ -16,10 +16,10 @@ SEO 依 Google Search Central 的 [SEO Starter Guide](https://developers.google.
 
 - PM：整合兩次要求、功能追溯與設計覆蓋。Top 5：project-work-governance、requirements-format、pm-expert、brainstorming、speak-human-tw；沿用既有計畫格式，縮小為本紀錄。
 - UI/UX：Top 5：html-mockup-sketcher、ui-component-demo、speak-human-tw、taste-skill、impeccable；本階段使用前四項，實作後才做 impeccable 對照。
-- Frontend：ponytail，沿用原生連結、語系與樣式。正式 UI 待 SD1 視覺確認。
-- QA：playwright、verification-before-completion；先驗預覽，再於確認後驗正式成品。
+- Frontend：ponytail，沿用原生連結、語系與樣式。依使用者「請直接開發」整合 SD1.1，新增首屏下載主按鈕。
+- QA：playwright、verification-before-completion；已驗設計預覽，本輪驗正式來源及建置快照。
 - Writer／SEO：全站三語文案與搜尋／分享文字；保留數字、按鍵、限制及真實行為。
-- 不另開 Backend、Video 或 Steam 發布流程：本次沒有 API、影片或商店發布工作。角色在同一代理內依序執行，未宣稱獨立代理審查。
+- 不另開 Backend、Video 或 Steam 發布流程：本次沒有 API、新影片製作或商店發布工作；整合使用者指定的現有影片。角色在同一代理內依序執行，未宣稱獨立代理審查。
 - 有效全域模型設定為 gpt-6-astra、xhigh；未變更設定。
 
 一年維護比較：本地商店圖片＋靜態連結只需隨品牌變更同步圖片；Steam iframe 會增加第三方請求、CSP 與窄螢幕處理；API 即時卡片增加失敗狀態與外部依賴。本次採第一項，不顯示易過期價格。SEO 保持單頁與既有語系，沒有足以支持新多頁架構的需求。
@@ -32,7 +32,7 @@ US-S3：搜尋與分享官網的人能看到準確的名稱、用途、摘要及
 US-S4：訪客能直接播放使用者指定的 AutoKey 介紹影片。
 
 * **條件 FR-S1**：訪客瀏覽桌面或手機首頁。
-  * **行為**：導覽提供「下載」入口，連到 `#release`；桌面頁首提供 Steam 商店連結，原試跑入口仍在首屏。
+  * **行為**：導覽提供「下載」入口，連到 `#release`；桌面頁首提供 Steam 商店連結；首屏新增「前往 Steam 下載」主按鈕，直達指定商店，保留試跑與影片入口，三語及手機均可使用。
 * **條件 FR-S2**：訪客到達下載區或展開下載 FAQ。
   * **行為**：呈現 Windows 平台、產品商店圖片及真實 Steam 按鈕；一般同頁導向使用者指定 URL，瀏覽器返回可回官網。文字說明購買後透過 Steam 安裝，不冒充直接安裝檔、不寫免費。
 * **條件 FR-S3**：訪客閱讀任一區塊、標籤或示範狀態。
@@ -48,9 +48,18 @@ US-S4：訪客能直接播放使用者指定的 AutoKey 介紹影片。
 
 ## 工作順序與門檻
 
-1. PM／Writer：核實商店、盤點全部字串及 SEO 缺口，維護此 P2。
+1. PM／Writer：核實商店、盤點全部字串及 SEO 缺口，維護此 P4。
 2. Designer：以 D1 正式來源為基線，完成 `design/steam-download-v1/` SD1，涵蓋整頁文案與新增下載區；附審閱頁、流程與 SEO 範例。
 3. QA／PM：實際渲染、三語響應式、連結及鄰近示範驗證；檢視全部需求映射；驗證後本地 commit。
-4. 使用者確認 SD1 後，Frontend 整合到 `public/`、根 `locales/`；Writer 同步 README／舊狀態；執行語系、建置、HTTP／SEO、完整相關旅程與設計對照後 commit。
+4. 使用者於 2026-11-13 提供首屏截圖並說「這裡也要新增下載的按鈕，請直接開發」，Frontend 依此授權整合到 `public/`、根 `locales/`；Writer 同步 README／舊狀態；執行語系、建置、HTTP／SEO、完整相關旅程與設計對照後 commit。
 
-SD1 的可見版本需依使用者指定團隊 Skill 確認；準備完整可檢視成品後才提出確認。無本次 GitHub 推送或正式託管替換要求。正式來源與部署驗收不能以預覽測試替代。
+SD1 設計與媒體服務的基線提交為 `ab359b7`。此次直接開發指示已包含首屏追加範圍與正式整合，記為 SD1.1，不重開確認。無本次 GitHub 推送或正式託管替換要求。正式來源與部署驗收不能以預覽測試替代。
+
+## P4 執行紀錄
+
+- 工作目錄／整合目標：`D:\AutoKey_Site` 現有 `main`；原始基線 `ab359b7`；序列工作無需新 worktree。
+- canonical 規格：本文件；設計：`design/steam-download-v1/` SD1.1；完整驗收：`steam-seo-validation.md`。
+- 首屏三個入口完成設計覆蓋：Steam 原生連結、試跑錨點、影片錨點；12 組三語／寬度初驗通過，桌面與手機實際截圖已檢視。新增按鈕沿用現有元件，不引入新視覺系統。
+- 正式映射：設計 `index.html`／`styles.css` → `public/`；三語 JSON → 根 `locales/`，產生 `public/locales.js`；兩張圖片、完整 MP4、robots 與 sitemap → `public/` 同相對路徑。審閱頁不發布。
+- 2026-11-13 執行完成：設計／來源整合、check、29 項語系（171 則／語言）、13 項 MP4、4 項邊界、4 項 HTTP 與新快照逐檔比對通過。41＋18 項產品旅程及最終4項 reduced-motion 複驗通過；impeccable 對照無待修必要項。媒體整合另將 reduced-motion 規則縮至網站自身動畫，避免干擾原生影片；設計與正式來源同步。
+- 完成條件：正式瀏覽器驗收、impeccable 對照、文件同步、任務檔案本地 commit；保留 4188 使用者預覽，關閉本輪測試瀏覽器與輔助伺服器。未執行 push 或正式部署。

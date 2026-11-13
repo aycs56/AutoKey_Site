@@ -170,7 +170,8 @@ globalThis.AutoKeyMessages = {
     "AutoKey 介紹影片": "AutoKey 介紹影片",
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。",
     "無法播放時，開啟 MP4 影片": "無法播放時，開啟 MP4 影片",
-    "先試跑網頁示範": "先試跑網頁示範"
+    "先試跑網頁示範": "先試跑網頁示範",
+    "前往 Steam 下載": "前往 Steam 下載"
   },
   "en": {
     "跳至主要內容": "Skip to main content",
@@ -342,7 +343,8 @@ globalThis.AutoKeyMessages = {
     "AutoKey 介紹影片": "AutoKey introduction video",
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "The video includes illustrative scenes. Compatibility depends on the target app. On-screen text is in English.",
     "無法播放時，開啟 MP4 影片": "Open the MP4 if playback is unavailable",
-    "先試跑網頁示範": "Try the web demos first"
+    "先試跑網頁示範": "Try the web demos first",
+    "前往 Steam 下載": "Download on Steam"
   },
   "zh-Hans": {
     "跳至主要內容": "跳到主要内容",
@@ -514,6 +516,7 @@ globalThis.AutoKeyMessages = {
     "AutoKey 介紹影片": "AutoKey 介绍视频",
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "视频包含场景演示，实际兼容性取决于目标程序。视频内文字为英文。",
     "無法播放時，開啟 MP4 影片": "无法播放时，打开 MP4 视频",
-    "先試跑網頁示範": "先试试网页演示"
+    "先試跑網頁示範": "先试试网页演示",
+    "前往 Steam 下載": "前往 Steam 下载"
   }
 };

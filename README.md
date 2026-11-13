@@ -7,7 +7,7 @@
 | 官方介紹網站（本專案） | `D:\AutoKey_Site` | `https://github.com/aycs56/AutoKey_Site.git` |
 | Windows 桌面程式 | `D:\AutoKey` | `https://github.com/aycs56/AutoKey.git` |
 
-官網提供 English、繁體中文、简体中文：產品介紹、遊戲採集長壓、滑鼠連點、定時翻頁三種互動示範，以及設定步驟、相容性與常見問題。首屏採集動畫可播放6秒、停止或重播；情境可執行一次或循環。頁內示範不會控制作業系統或遊戲，也不代表特定遊戲已通過相容性測試。
+官網提供 English、繁體中文、简体中文：Steam 下載入口、15 秒介紹影片、產品介紹、遊戲採集長壓、滑鼠連點、定時翻頁三種互動示範，以及設定步驟、相容性與常見問題。首屏採集動畫可播放6秒、停止或重播；情境可執行一次或循環。頁內示範不會控制作業系統或遊戲，也不代表特定遊戲已通過相容性測試。
 
 首次依瀏覽器語言順序匹配，無對應使用英文；頂部語言選單立即切換，手選保存於本站 localStorage。切換保留情境與 FAQ 展開，會重設示範並停止播放。瀏覽器禁止儲存時，當次選擇仍有效並顯示提示。JavaScript 停用時保留繁中靜態全文，不顯示無效切換或示範控制。
 
@@ -31,7 +31,7 @@ npm.cmd run preview
 
 `build` 只將本站 `public/` 複製至固定 `dist/`，不讀桌面程式目錄。`preview` 以相同位址提供建置成果。可用環境變數 `PORT` 改連接埠。所有資產本機自足，可直接開 `public/index.html` 檢視基本內容與互動；正式部署請用靜態 HTTP 主機。
 
-2026-10-22整站改版依使用者確認的[D1設計](docs/ai-team/design/redesign-v1/design-handoff.md)整合。新版結果與環境限制見[改版驗證紀錄](docs/ai-team/redesign-validation.md)；[原版驗收紀錄](docs/ai-team/validation.md)保留歷史，不代表新版驗收。每語159則文案，沿用原有29項語系及4項目錄隔離檢查。
+2026-10-22整站改版依使用者確認的[D1設計](docs/ai-team/design/redesign-v1/design-handoff.md)整合。新版結果與環境限制見[改版驗證紀錄](docs/ai-team/redesign-validation.md)；[原版驗收紀錄](docs/ai-team/validation.md)保留歷史，不代表新版驗收。D1 當時每語159則文案，沿用原有29項語系及4項目錄隔離檢查。
 
 若Windows占用`dist/assets`，一般建置可能回報`EBUSY`。本機可繼續預覽`public/`，需要獨立成品時執行`npm.cmd run build:hosting`；它會產生新的快照，實際路徑記在`output/hosting-build.json`。這個命令只建置，不安裝或更新正在運行的網站。
 
@@ -62,6 +62,6 @@ git push -u origin main
 
 更新正式網站先執行 `npm.cmd run build:hosting`，再以管理員執行安裝腳本。完整指令、停止與復原方式見 [本機託管維運](docs/local-hosting.md)。Git 提交、GitHub 推送與本機正式快照部署分開處理；修改原始檔不會直接改動正在運行的正式網站。
 
-AutoKey 的 [Steam 商店](https://store.steampowered.com/app/5331510) 已公開，2026-11-13 查核可購買。新增下載入口、介紹影片、三語文案與 SEO 的 [SD1 設計預覽](docs/ai-team/design/steam-download-v1/design-handoff.md) 已準備，正式 UI 整合仍待確認。啟動 `node tools/design-preview.mjs --steam` 後，開啟 `http://127.0.0.1:4189/` 審閱。
+AutoKey 的 [Steam 商店](https://store.steampowered.com/app/5331510) 已公開，2026-11-13 查核可購買。首屏、頁首、下載區及 FAQ 的 Steam 入口、指定介紹影片、三語文案與 SEO 已依「請直接開發」整合至正式來源；每語 171 則。設計與來源對照見 [SD1.1 交接](docs/ai-team/design/steam-download-v1/design-handoff.md)，實測見 [驗收紀錄](docs/ai-team/steam-seo-validation.md)。本次預覽使用 `PORT=4188` 的 `tools/serve.mjs`，網址 `http://127.0.0.1:4188/`；原設計可用 `node tools/design-preview.mjs --steam` 在 4189 重開。
 
-本機與正式伺服器來源已補上 MP4 分段讀取；`npm.cmd run test:media` 驗證一般、區間、尾段、HEAD、非法 Range 與 If-Range 回退。這不會更新正在運行的正式託管快照。設計中的影片為使用者指定原檔的完整副本，播放前不下載影片內容；不新增外部播放器或追蹤。
+本機與正式伺服器來源已補上 MP4 分段讀取；`npm.cmd run test:media` 驗證一般、區間、尾段、HEAD、非法 Range 與 If-Range 回退。這不會更新正在運行的正式託管快照。網站影片為使用者指定原檔的完整副本，播放前不下載影片內容；不新增外部播放器或追蹤。
