@@ -171,7 +171,21 @@ globalThis.AutoKeyMessages = {
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "The video includes illustrative scenes. Compatibility depends on the target app. On-screen text is in English.",
     "無法播放時，開啟 MP4 影片": "Open the MP4 if playback is unavailable",
     "先試跑網頁示範": "Try the web demos first",
-    "前往 Steam 下載": "Download on Steam"
+    "前往 Steam 下載": "Download on Steam",
+    "推薦工具": "Tools",
+    "也看看這些工具。": "More tools to try.",
+    "製作自己的桌面寵物，設定提醒與日常互動。": "Create your own desktop pet, with reminders and everyday interactions.",
+    "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。": "Roll Rainbow Six Siege operators and loadouts for your next team challenge.",
+    "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。": "Roll Overwatch 2 heroes and perks, then try a different combination.",
+    "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。": "Capture game chat, read translations, and copy a translated reply.",
+    "前往網站": "Visit website",
+    "暫停輪播": "Pause rotation",
+    "播放輪播": "Start rotation",
+    "上一個推薦工具": "Previous tool",
+    "下一個推薦工具": "Next tool",
+    "推薦工具清單": "Recommended tools",
+    "推薦工具輪播": "Recommended tools carousel",
+    "第 {index} 個，共 {total} 個": "Tool {index} of {total}"
   },
   "zh-Hant": {
     "跳至主要內容": "跳至主要內容",
@@ -344,7 +358,21 @@ globalThis.AutoKeyMessages = {
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。",
     "無法播放時，開啟 MP4 影片": "無法播放時，開啟 MP4 影片",
     "先試跑網頁示範": "先試跑網頁示範",
-    "前往 Steam 下載": "前往 Steam 下載"
+    "前往 Steam 下載": "前往 Steam 下載",
+    "推薦工具": "推薦工具",
+    "也看看這些工具。": "也看看這些工具。",
+    "製作自己的桌面寵物，設定提醒與日常互動。": "製作自己的桌面寵物，設定提醒與日常互動。",
+    "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。": "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。",
+    "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。": "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。",
+    "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。": "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。",
+    "前往網站": "前往網站",
+    "暫停輪播": "暫停輪播",
+    "播放輪播": "播放輪播",
+    "上一個推薦工具": "上一個推薦工具",
+    "下一個推薦工具": "下一個推薦工具",
+    "推薦工具清單": "推薦工具清單",
+    "推薦工具輪播": "推薦工具輪播",
+    "第 {index} 個，共 {total} 個": "第 {index} 個，共 {total} 個"
   },
   "zh-Hans": {
     "跳至主要內容": "跳到主要内容",
@@ -517,6 +545,20 @@ globalThis.AutoKeyMessages = {
     "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "视频包含场景演示，实际兼容性取决于目标程序。视频内文字为英文。",
     "無法播放時，開啟 MP4 影片": "无法播放时，打开 MP4 视频",
     "先試跑網頁示範": "先试试网页演示",
-    "前往 Steam 下載": "前往 Steam 下载"
+    "前往 Steam 下載": "前往 Steam 下载",
+    "推薦工具": "推荐工具",
+    "也看看這些工具。": "也看看这些工具。",
+    "製作自己的桌面寵物，設定提醒與日常互動。": "制作自己的桌面宠物，设置提醒与日常互动。",
+    "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。": "随机抽选《彩虹六号》的干员与装备，和队友一起挑战。",
+    "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。": "抽选《守望先锋》的英雄与特殊技能，换个组合开打。",
+    "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。": "截取游戏聊天文字、查看翻译，再复制译好的回复。",
+    "前往網站": "前往网站",
+    "暫停輪播": "暂停轮播",
+    "播放輪播": "播放轮播",
+    "上一個推薦工具": "上一个推荐工具",
+    "下一個推薦工具": "下一个推荐工具",
+    "推薦工具清單": "推荐工具列表",
+    "推薦工具輪播": "推荐工具轮播",
+    "第 {index} 個，共 {total} 個": "第 {index} 个，共 {total} 个"
   }
 };

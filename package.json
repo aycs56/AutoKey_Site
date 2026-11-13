@@ -11,7 +11,7 @@
     "build": "node tools/build.mjs",
     "build:hosting": "node tools/hosting/build.mjs",
     "preview": "node tools/serve.mjs --dist",
-    "check": "node --check public/app.js && node --check public/i18n-core.js && node --check public/i18n.js && node --check tools/build-locales.mjs && node --check tools/build.mjs && node --check tools/serve.mjs && node --check tools/content-root.mjs && node --check tools/hosting/server.mjs && node --check tools/hosting/build.mjs",
+    "check": "node --check public/app.js && node --check public/recommendations.js && node --check public/i18n-core.js && node --check public/i18n.js && node --check tools/build-locales.mjs && node --check tools/build.mjs && node --check tools/serve.mjs && node --check tools/content-root.mjs && node --check tools/hosting/server.mjs && node --check tools/hosting/build.mjs",
     "test:hosting": "node --test tests/hosting.mjs && node tests/hosting-build.mjs",
     "test:hosting:monitor": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests/hosting-monitor.ps1",
     "test:boundaries": "node tests/build-boundaries.mjs",

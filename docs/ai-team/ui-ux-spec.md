@@ -1,5 +1,7 @@
 # AutoKey 官網 UI／UX 規格
 
+2026-11-13 推薦工具：Header 的 Navigation Menu 與頁底 Carousel 以 [RT1 規格與來源](recommendations-plan.md) 為準，canonical HTML 在 `design/recommendations-v1/`。沿用 SD1.1；網站名稱＋官方圖示、無網址文字、三語、暫停與手機滑動契約均集中於 RT1。元件引用 Atlas `navigation-menu`／`carousel` 及共享 `navigation-disclosure`／`data-and-media`，不增加套件。
+
 2026-11-13新增：Steam／三語文案與SEO／指定介紹影片的當前設計為[SD1交接](design/steam-download-v1/design-handoff.md)，SD1.1 已依使用者「請直接開發」整合，首屏追加「前往 Steam 下載」。其 Link、Card、Video Player 決策、全部狀態與尺寸集中於該交接；正式來源已採用 SD1.1。後續正式整合不得以本歷史版的「商店待公告」取代已核實的Steam狀態。
 
 歷史版本：2026-10-22起正式來源已依使用者確認的[D1交接規格](design/redesign-v1/design-handoff.md)整合。以下保留原版決策，不作新版視覺驗收基準。

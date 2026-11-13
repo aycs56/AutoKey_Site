@@ -47,7 +47,7 @@ Header icon28px、選項最小56px，浮層約300px寬且高度受視窗限制�
 2. 將同一HTML、CSS、JS、圖示與catalog整合public／locales，沿用既有runtime、建置與預覽4188；完成實際操作與impeccable比對。
 3. check、localization、託管快照與瀏覽器相關旅程通過，更新本紀錄與README、工作規範，提交main。保留4188，清理本輪測試程序；不新建worktree。
 
-驗收與修訂紀錄待執行後附於本文件。
+驗收與修訂紀錄如下，正式整合已完成。
 
 ### RT1 設計覆蓋與交接
 
@@ -56,3 +56,25 @@ PM按FR-T1–5完成覆蓋審閱：S1展開清單列出4個正確網址／官方
 已實際檢視1440繁中與320英文的選單、輪播截圖；三語×5尺寸的30項排版檢查、11項互動／參考模式檢查通過。證據：`output/rt1-design-results.json`、`rt1-design-interactions.json`、`output/playwright/rt1-design-*`。Atlas兩個canonical頁均經Chromium開啟；共享library的tab切換、disclosure展開及媒體卡片已實看。未改品牌或增加美術修訂，RT1新增元件首次製作0次。
 
 工程使用同一 `index.html`、`recommendations.css`、`recommendations.js`、三語catalog與四個圖示；`styles.css`為既有SD1.1基線。圖示來源／檔案大小／SHA256保存在設計 `assets/sources.json`。預覽命令 `node tools/design-preview.mjs --recommendations`，loopback4192、HTTP noindex；review頁僅交接使用，不加入public。
+
+### 正式整合與驗收：通過
+
+設計階段本地提交 `f249c57`；正式來源已整合public與根locales，三語各185則。沒有新增runtime套件，既有app.js／語系runtime／影片與Steam來源保持原狀。
+
+| 需求／使用者旅程 | 正式來源驗收證據與結果 |
+| --- | --- |
+| FR-T1：Header辨識與開站 | 四站名稱＋icon，無網址文字；實際逐一點擊四站並返回，標題正確。R6與Game Translation依語言導向各站語系首頁，根網址保留使用者指定值。Enter／Tab／Escape、焦點還原、點外側與focus移出皆通過。 |
+| FR-T2：底部卡片輪播 | 前後切換、末張／首張循環、方向鍵、位置指示、卡片開啟真實網站通過；Chromium手機觸控事件實際滑動可換卡。 |
+| FR-T3：播放與暫停 | 真實等待6秒週期，確認自動前進、hover停住、鍵盤focus停住、明確暫停及重新播放；手動切換／觸控後停止，reduced-motion預設手動，通過。 |
+| FR-T4：三語／響應／無JS | 三語×320／375／768／1024／1440的30項排版檢查通過，互動目標至少44px，無溢出。375×300短視窗下拉清單在視窗內捲動；185則catalog完整。無JS仍能展開選單、使用4張卡片連結，控制列隱藏。 |
+| FR-T5：鄰近內容與SEO | 首屏Steam網址、canonical、原有單次示範通過；新增圖示及全部首頁資產只向本站請求。四圖同源副本可解碼，沒有遠端iframe／追蹤／網域文字。 |
+
+命令：`npm.cmd run check`、`npm.cmd run test:localization`（29項）、`npm.cmd run test:hosting`（4項HTTP＋全新快照逐檔比對）均通過。最終快照 `output/hosting-builds/release-ShnxZL/site`，指標 `output/hosting-build.json`；7個設計／正式檔案SHA256相同，見 `output/rt1-integrity.json`。輪播使用有名稱的group語意，最終HTML同步後快照再比對通過。本次沒有改動媒體服務或建置邊界，沿用既有測試，不重跑無關監控／部署流程。
+
+瀏覽器證據共64項：`output/rt1-product-results.json`（29）、`rt1-product-layout-results.json`（30）、`rt1-touch-pair-results.json`（5）。Windows／Chromium headless、DPR1；手機為瀏覽器觸控模擬，未宣稱實體手機驗收。參考頁與測試資料存於output，不納入公開成品。
+
+impeccable與Taste成品複核：1440×960繁中與320×812英文，Header展開／頁底輪播共4組design-product PNG逐位元相同，見 `output/rt1-pixel-results.json` 與 `output/playwright/rt1-pair-*`。已實際開圖確認主次、文字換行、52px圖示、卡片與外框；沿用既有表面與字色，正文對比至少8.53:1、薄荷綠焦點12.83:1。所需操作完整，沒有待修矯正項；新增RT1元件維持初次製作0次美術修訂。
+
+測試工具調整：共享library有兩個summary，改用第一個明確操作；窄版開啟浮層時會遮住hero文字，外側點擊驗收改點可見的Header品牌，而非被遮擋標題。沒有因此改動產品。官方原始SVG與PNG保留來源和hash；圖示失敗時連結名稱仍在。
+
+結案：正式來源在現有main本地提交，保留4188預覽及驗收證據；本輪4190參考、4192設計與headless瀏覽器在結案時關閉。未建立worktree／暫存分支，沒有push或公開部署。程序及最終commit寫入 `output/preview-process.json`。

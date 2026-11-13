@@ -169,5 +169,19 @@
   "影片含情境示意，實際相容性取決於目標程式。影片內文字為英文。": "The video includes illustrative scenes. Compatibility depends on the target app. On-screen text is in English.",
   "無法播放時，開啟 MP4 影片": "Open the MP4 if playback is unavailable",
   "先試跑網頁示範": "Try the web demos first",
-  "前往 Steam 下載": "Download on Steam"
+  "前往 Steam 下載": "Download on Steam",
+  "推薦工具": "Tools",
+  "也看看這些工具。": "More tools to try.",
+  "製作自己的桌面寵物，設定提醒與日常互動。": "Create your own desktop pet, with reminders and everyday interactions.",
+  "隨機抽選《虹彩六號》的幹員與裝備，和隊友一起挑戰。": "Roll Rainbow Six Siege operators and loadouts for your next team challenge.",
+  "抽選《鬥陣特攻》的英雄與特殊能力，換個組合開打。": "Roll Overwatch 2 heroes and perks, then try a different combination.",
+  "擷取遊戲聊天文字、查看翻譯，再複製譯好的回覆。": "Capture game chat, read translations, and copy a translated reply.",
+  "前往網站": "Visit website",
+  "暫停輪播": "Pause rotation",
+  "播放輪播": "Start rotation",
+  "上一個推薦工具": "Previous tool",
+  "下一個推薦工具": "Next tool",
+  "推薦工具清單": "Recommended tools",
+  "推薦工具輪播": "Recommended tools carousel",
+  "第 {index} 個，共 {total} 個": "Tool {index} of {total}"
 }
