@@ -31,7 +31,7 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
-`build` 只將本站 `public/` 複製至固定 `dist/`，不讀桌面程式目錄。`preview` 以相同位址提供建置成果。可用環境變數 `PORT` 改連接埠。所有資產本機自足，可直接開 `public/index.html` 檢視基本內容與互動；正式部署請用靜態 HTTP 主機。
+`build` 只將本站 `public/` 複製至固定 `dist/`，不讀桌面程式目錄。`preview` 以相同位址提供建置成果。可用環境變數 `PORT` 改連接埠。介面、圖示與影片資產由本站提供；另依使用者指定載入Google Tag Manager。可直接開 `public/index.html` 檢視基本內容與互動；GTM與安全政策驗收請用HTTP預覽。
 
 2026-10-22整站改版依使用者確認的[D1設計](docs/ai-team/design/redesign-v1/design-handoff.md)整合。新版結果與環境限制見[改版驗證紀錄](docs/ai-team/redesign-validation.md)；[原版驗收紀錄](docs/ai-team/validation.md)保留歷史，不代表新版驗收。D1 當時每語159則文案，沿用原有29項語系及4項目錄隔離檢查。
 
@@ -48,7 +48,7 @@ npm.cmd run preview
 - `docs/ai-team/`：需求、UI/UX、資產對照及驗收。
 - `output/playwright/`：本機 QA 證據（Git 忽略）。
 
-網站不含追蹤、cookies、資料提交表單、帳戶或外部字型；localStorage 只保存語言偏好。桌面 31 語系與網站 3 語系分開維護。發布文案前需同步核對桌面 README，尤其前景／背景相容性、Steam Cloud 與連招序列的實際狀態。
+網站沒有資料提交表單、帳戶或外部字型；本站localStorage只保存語言偏好。2026-11-13依使用者指定加入Google Tag Manager容器 `GTM-NC3J5WLL`，實際標籤與其資料處理由GTM端設定；不再宣稱網站完全無追蹤或cookies。初始化與CSP說明見 [GTM整合紀錄](docs/ai-team/tag-manager-integration.md)，修改後執行 `npm.cmd run test:tag-manager`。桌面31語系與網站3語系分開維護；產品文案仍須核對桌面README的相容性、Steam Cloud與連招狀態。
 
 ## GitHub 與網站部署
 

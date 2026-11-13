@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { createSiteServer } from '../tools/hosting/server.mjs';
+import path from 'node:path';
+
+test('requested GTM snippet is unique and its exact inline body is authorized by HTTP CSP', async t => {
+  const html = await readFile('public/index.html', 'utf8');
+  assert.equal((html.match(/https:\/\/www\.googletagmanager\.com\/gtm\.js\?id=GTM-NC3J5WLL/g) || []).length, 1);
+  assert.match(html, /<script async src="https:\/\/www\.googletagmanager\.com\/gtm\.js\?id=GTM-NC3J5WLL"><\/script>/);
+  const inline = html.match(/<script id="tag-manager-init">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(inline, 'GTM initializer is present');
+  assert.match(inline, /window\.dataLayer = window\.dataLayer \|\| \[\];/);
+  assert.match(inline, /function gtag\(\)\{dataLayer\.push\(arguments\);\}/);
+  assert.match(inline, /gtag\('js', new Date\(\)\);/);
+  const server = await createSiteServer({ root: path.resolve('public'), siteUrl: 'https://autokey.desktoppetstudio.com/' });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const response = await fetch(`http://127.0.0.1:${server.address().port}/`);
+  const csp = response.headers.get('content-security-policy');
+  const hash = createHash('sha256').update(inline.replace(/\r\n?/g, '\n')).digest('base64');
+  const scripts = csp.split(';').find(directive => directive.trim().startsWith('script-src '));
+  assert.ok(scripts.includes(`'sha256-${hash}'`), 'HTML whitespace and CSP hash agree');
+  assert.ok(scripts.includes('https://www.googletagmanager.com'));
+  const connections = csp.split(';').find(directive => directive.trim().startsWith('connect-src '));
+  assert.ok(connections.includes('https://www.google-analytics.com'), 'Current container GA4 collection endpoint is allowed');
+  assert.ok(!scripts.includes('unsafe-inline') && !scripts.includes('unsafe-eval'));
+  assert.match(csp, /object-src 'none'/);
+  assert.match(csp, /frame-ancestors 'none'/);
+});

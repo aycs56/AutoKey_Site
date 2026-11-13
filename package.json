@@ -16,6 +16,7 @@
     "test:hosting:monitor": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests/hosting-monitor.ps1",
     "test:boundaries": "node tests/build-boundaries.mjs",
     "test:media": "node --test tests/media.mjs",
+    "test:tag-manager": "node --test tests/tag-manager.mjs",
     "test:localization": "node tests/localization.mjs"
   },
   "engines": { "node": ">=22" }

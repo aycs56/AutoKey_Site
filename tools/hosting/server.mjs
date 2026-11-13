@@ -7,6 +7,9 @@ import { fileURLToPath } from 'node:url';
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.ttf': 'font/ttf', '.woff2': 'font/woff2' };
 const required = ['index.html', 'styles.css', 'app.js', 'i18n-core.js', 'i18n.js', 'locales.js', 'assets/autokey.svg'];
 
+// Authorizes the exact user-supplied inline initializer in public/index.html.
+export const siteContentSecurityPolicy = "default-src 'self'; script-src 'self' 'sha256-jYHg7tXSuuVUqjy+JeRT8vyG97+Spkw5IFHdQEBbmrw=' https://www.googletagmanager.com; style-src 'self'; img-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google.com https://www.google-analytics.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'";
+
 // Call only after the route has resolved and checked the file against its root.
 // Keep this helper in the standalone server so existing hosting packaging works.
 export async function serveVideoFile(req, res, file) {
@@ -50,7 +53,7 @@ export async function createSiteServer({ root, siteUrl }) {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'");
+    res.setHeader('Content-Security-Policy', siteContentSecurityPolicy);
     const send = (status, type, body, cache = 'no-store') => {
       res.writeHead(status, { 'Content-Type': type, 'Content-Length': Buffer.byteLength(body), 'Cache-Control': cache });
       res.end(req.method === 'HEAD' ? undefined : body);

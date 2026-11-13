@@ -3,7 +3,7 @@ import { readFile, realpath, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { contentRoot } from './content-root.mjs';
-import { serveVideoFile } from './hosting/server.mjs';
+import { serveVideoFile, siteContentSecurityPolicy } from './hosting/server.mjs';
 
 const projectRoot = await realpath(fileURLToPath(new URL('../', import.meta.url)));
 const root = await contentRoot(projectRoot, process.argv.includes('--dist') ? 'dist' : 'public');
@@ -33,7 +33,7 @@ const server = http.createServer(async (request, response) => {
       'Content-Length': body.length,
       'X-Content-Type-Options': 'nosniff',
       'Cache-Control': 'no-store',
-      'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+      'Content-Security-Policy': siteContentSecurityPolicy
     });
     response.end(request.method === 'HEAD' ? undefined : body);
   } catch (error) {
