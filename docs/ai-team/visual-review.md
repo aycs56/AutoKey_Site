@@ -19,3 +19,9 @@
 使用者已批准`bd7fa98` D1。正式HTML／CSS／app／場景SVG逐位元沿用；沒有新增美術修訂，以上次數不變。UI/UX依Taste與impeccable檢視正式全頁、層次、文字、資產位置與必要內容，與批准稿沒有差異，無新增矯正清單。
 
 在相同DPR1、reduced-motion（固定截圖時間，不取代一般動畫測試）、locale與viewport下，1440×1000繁中及390×844英文兩組全頁PNG逐位元相同。證據：`output/playwright/redesign-production-{design|product}-{1440|390}.png`。實際動畫及各情境由正式旅程驗證另查，結果在`redesign-validation.md`；不只憑來源檔案相同宣稱呈現一致。
+
+## SD1 指定新增與文案調整（2026-11-13）
+
+使用者新增下載入口、全站文案與介紹影片。SD1初稿已以Taste檢視桌面及手機實際圖；沒有額外美術打磨。保留原同位置歷史：S1-header-hero 2→3（本批新增下載／影片入口與文案），S2-features 1→2（功能標題具體化），S3-studio 2→3（示範說明），S6-faq-release 1→2（取得資訊／卡片），S4／S5保持0。S1／S3已到上限，不再追加風格修改。S7-introduction為使用者明確新增的影片區，初次製作0；SD1審閱頁初次製作0。未發現必修視覺缺陷。
+
+證據：`output/playwright/sd1-desktop-home.png`、`sd1-download-section.png`、`sd1-video-section.png`、`sd1-en-mobile-download.png`、`sd1-mobile-video.png`。原生影片按鈕位置測試與程式化focus方式曾調整測試操作，未修改產品外觀，不計美術修訂。正式SD1落地與impeccable對照仍待使用者確認。

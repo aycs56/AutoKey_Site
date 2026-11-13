@@ -1,10 +1,48 @@
 import http from 'node:http';
+import { createReadStream } from 'node:fs';
 import { readFile, stat, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.ttf': 'font/ttf', '.woff2': 'font/woff2' };
 const required = ['index.html', 'styles.css', 'app.js', 'i18n-core.js', 'i18n.js', 'locales.js', 'assets/autokey.svg'];
+
+// Call only after the route has resolved and checked the file against its root.
+// Keep this helper in the standalone server so existing hosting packaging works.
+export async function serveVideoFile(req, res, file) {
+  const { size } = await stat(file);
+  res.setHeader('Content-Type', 'video/mp4');
+  res.setHeader('Accept-Ranges', 'bytes');
+  res.setHeader('Cache-Control', 'public, max-age=300');
+  let start = 0, end = size - 1, partial = false;
+  const range = req.method === 'GET' && !req.headers['if-range'] ? req.headers.range : null;
+  if (range) {
+    const match = /^bytes=(\d*)-(\d*)$/.exec(range);
+    if (match && (match[1] || match[2])) {
+      if (!match[1]) {
+        const suffix = Number(match[2]);
+        start = Number.isSafeInteger(suffix) && suffix > 0 ? Math.max(0, size - suffix) : NaN;
+      } else {
+        start = Number(match[1]);
+        end = match[2] ? Number(match[2]) : end;
+      }
+    } else start = NaN;
+    if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start < 0 || start >= size || end < start) {
+      res.writeHead(416, { 'Content-Range': `bytes */${size}`, 'Content-Length': 0 }).end();
+      return;
+    }
+    end = Math.min(end, size - 1);
+    partial = true;
+    res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`);
+  }
+  res.writeHead(partial ? 206 : 200, { 'Content-Length': Math.max(0, end - start + 1) });
+  if (req.method === 'HEAD' || size === 0) { res.end(); return; }
+  const stream = createReadStream(file, { start, end });
+  stream.on('error', () => res.destroy());
+  res.on('close', () => stream.destroy());
+  stream.pipe(res);
+}
+
 export async function createSiteServer({ root, siteUrl }) {
   const directory = await realpath(path.resolve(root));
   const within = file => file === directory || file.startsWith(`${directory}${path.sep}`);
@@ -47,6 +85,7 @@ export async function createSiteServer({ root, siteUrl }) {
       file = await realpath(file);
       if (!within(file)) return send(404, 'text/plain', 'Not found');
       const extension = path.extname(file).toLowerCase();
+      if (extension === '.mp4') { await serveVideoFile(req, res, file); return; }
       if (!types[extension]) return send(404, 'text/plain', 'Not found');
       const content = await readFile(file);
       send(200, types[extension], content, ['.html', '.json', '.xml'].includes(extension) ? 'no-cache' : 'public, max-age=300');

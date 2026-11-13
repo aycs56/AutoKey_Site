@@ -15,6 +15,7 @@
     "test:hosting": "node --test tests/hosting.mjs && node tests/hosting-build.mjs",
     "test:hosting:monitor": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests/hosting-monitor.ps1",
     "test:boundaries": "node tests/build-boundaries.mjs",
+    "test:media": "node --test tests/media.mjs",
     "test:localization": "node tests/localization.mjs"
   },
   "engines": { "node": ">=22" }

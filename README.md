@@ -62,4 +62,6 @@ git push -u origin main
 
 更新正式網站先執行 `npm.cmd run build:hosting`，再以管理員執行安裝腳本。完整指令、停止與復原方式見 [本機託管維運](docs/local-hosting.md)。Git 提交、GitHub 推送與本機正式快照部署分開處理；修改原始檔不會直接改動正在運行的正式網站。
 
-Steam 尚未公開商店 URL／下載管道，網站因此不放假商店或下載連結。確定上架後再於取得區塊加入已驗證的商店連結及對應文案。
+AutoKey 的 [Steam 商店](https://store.steampowered.com/app/5331510) 已公開，2026-11-13 查核可購買。新增下載入口、介紹影片、三語文案與 SEO 的 [SD1 設計預覽](docs/ai-team/design/steam-download-v1/design-handoff.md) 已準備，正式 UI 整合仍待確認。啟動 `node tools/design-preview.mjs --steam` 後，開啟 `http://127.0.0.1:4189/` 審閱。
+
+本機與正式伺服器來源已補上 MP4 分段讀取；`npm.cmd run test:media` 驗證一般、區間、尾段、HEAD、非法 Range 與 If-Range 回退。這不會更新正在運行的正式託管快照。設計中的影片為使用者指定原檔的完整副本，播放前不下載影片內容；不新增外部播放器或追蹤。
